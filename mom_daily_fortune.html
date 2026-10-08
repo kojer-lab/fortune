@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf7ee">
+  <meta name="description" content="1958년 5월 27일 양력, 오전 11시 30분 전주 출생 어머니를 위한 매일 운세">
+  <title>엄마의 오늘 · 개띠 어머니를 위한 매일 운세</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fbf7ee;
+      --paper: #fffefa;
+      --ink: #3d3a36;
+      --soft-ink: #79736d;
+      --orange: #ba5b3e;
+      --orange-light: #f9e9db;
+      --sage: #e8eee6;
+      --line: #ebe2d7;
+      --shadow: 0 12px 38px rgba(87, 57, 38, 0.08);
+      --scale: 1;
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 95% 4%, rgba(240, 194, 150, .24), transparent 31%),
+        radial-gradient(circle at 4% 75%, rgba(211, 224, 202, .32), transparent 35%),
+        var(--bg);
+      min-height: 100vh;
+      -webkit-text-size-adjust: 100%;
+    }
+    .container { width: min(100% - 32px, 660px); margin: 0 auto; padding: 24px 0 46px; }
+    .masthead { text-align: center; padding: 17px 0 24px; }
+    .masthead .eyebrow { color: var(--orange); font-weight: 800; letter-spacing: .17em; font-size: 12px; margin: 0 0 12px; }
+    h1 { font-family: Georgia, 'AppleMyungjo', 'Batang', serif; font-size: clamp(37px, 8vw, 49px); font-weight: 700; letter-spacing: -.07em; margin: 0; }
+    .subtitle { font-size: calc(16px * var(--scale)); color: var(--soft-ink); margin: 11px 0 0; font-weight: 500; }
+    .profile { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 17px auto 0; }
+    .profile span { display: inline-flex; align-items: center; font-size: calc(14px * var(--scale)); font-weight: 750; color: #8a5c48; background: #fffdf7; border: 1px solid #ead9cb; border-radius: 999px; padding: 9px 13px; }
+    .zodiac { margin-top: 16px; border: 1px solid #e2e9dd; border-radius: 21px; background: #f3f7ef; padding: 25px 23px; }
+    .zodiac h3 { font-size: calc(19px * var(--scale)); margin: 0 0 11px; font-weight: 850; }
+    .zodiac p { font-size: calc(18px * var(--scale)); color: #52604e; line-height: 1.75; margin: 0; word-break: keep-all; }
+    .zodiac .sign-line, .zodiac .hour-line { color:#7e8e76; border-top:1px solid #dce5d5; padding-top: 14px; margin-top: 15px; }
+    .birthday { margin: 0 0 15px; padding: 18px 20px; background: #fff0e2; border: 1px solid #f1d2b8; border-radius: 19px; color: #975438; text-align: center; font-size: calc(19px * var(--scale)); font-weight: 800; line-height: 1.6; }
+    .birthday[hidden] { display: none; }
+    .offline-note { border:1px solid #e4d2b6; border-radius:16px; background:#fff5e7; padding:14px 17px; font-size:16px; line-height:1.6; margin-bottom:13px; color:#72523c; }
+    .day-picker { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 20px; padding: 9px; margin-bottom: 19px; }
+    .day-picker button { border: 0; color: #795f54; background: transparent; font: inherit; min-width: 72px; min-height: 50px; cursor: pointer; font-size: calc(16px * var(--scale)); border-radius: 13px; font-weight: 750; }
+    .day-picker button[aria-pressed="true"] { color: #fff; background: var(--orange); box-shadow: 0 3px 9px rgba(186,91,62,.23); }
+    .day-picker button:focus-visible, .utility button:focus-visible, .share:focus-visible { outline: 3px solid #946646; outline-offset: 3px; }
+    .date-line { text-align:center; margin: 12px 0 14px; color: var(--soft-ink); font-weight: 650; font-size: calc(15px * var(--scale)); }
+    .hero { position:relative; overflow: hidden; background: linear-gradient(145deg,#fffef9 7%,#fff7ed 100%); border: 1px solid #f0ded1; border-radius: 27px; padding: 34px 27px 30px; box-shadow: var(--shadow); text-align:center; }
+    .hero:before { content:''; position: absolute; width: 140px; height: 140px; border: 1px solid rgba(212,158,118,.20); border-radius: 50%; top:-71px; left:-74px; pointer-events:none; }
+    .sun { width: 80px; height:80px; display: grid; place-items: center; border-radius: 100%; color:#a96738; background:#f8e6cc; margin: 0 auto 19px; font-size: 39px; box-shadow: 0 0 0 9px rgba(251,232,202,.38); }
+    .pill { font-size: calc(14px * var(--scale)); font-weight: 750; border: 1px solid #ecd2bc; color: #aa583b; background: #fff4e7; padding: 8px 15px; border-radius: 99px; display:inline-block; margin: 0 auto 15px; }
+    h2 { font-size: calc(27px * var(--scale)); line-height: 1.5; word-break: keep-all; letter-spacing: -.055em; margin: 0 auto 15px; font-weight: 850; max-width: 470px; }
+    .hero p { font-size: calc(19px * var(--scale)); line-height: 1.9; letter-spacing: -.025em; word-break: keep-all; margin: 0 auto; max-width: 510px; }
+    .divider { display: flex; align-items:center; gap:12px; font-size: 12px; color:#cfaf9e; margin:24px 0 17px; }
+    .divider:before, .divider:after { content:''; flex:1; height:1px; background:#e8dcd0; }
+    .grid { display:grid; gap: 13px; grid-template-columns: 1fr 1fr; }
+    .fortune-card { background: var(--paper); border: 1px solid var(--line); border-radius: 21px; padding: 23px 21px 20px; box-shadow: 0 4px 16px rgba(87,57,38,.035); }
+    .fortune-card .icon { font-size: 27px; margin-bottom: 13px; display: block; }
+    .fortune-card h3 { font-size: calc(19px * var(--scale)); letter-spacing: -.04em; margin: 0 0 11px; font-weight: 850; }
+    .fortune-card p { font-size: calc(17px * var(--scale)); color: #625d58; line-height:1.75; word-break:keep-all; margin:0; }
+    .small-title { display:flex; align-items:center; gap:9px; font-size: calc(18px * var(--scale)); margin: 0 0 13px; }
+    .bottom-card { border-radius: 21px; background: var(--sage); padding: 24px; margin-top: 15px; }
+    .bottom-card p { margin: 0; font-size: calc(19px * var(--scale)); line-height: 1.8; word-break:keep-all; font-weight: 600; }
+    .lucky { display:flex; flex-wrap:wrap; gap: 9px; align-items:center; margin:17px 0 3px; }
+    .lucky span { display:inline-flex; background:#fffefb; border:1px solid var(--line); border-radius: 99px; padding: 11px 15px; color:#645951; font-size: calc(15px * var(--scale)); font-weight: 700; }
+    .utility { display:flex; gap: 10px; margin:22px 0 0; }
+    .utility button, .share { font:inherit; min-height:56px; border-radius: 16px; padding: 13px 15px; font-size: calc(16px * var(--scale)); font-weight:800; cursor: pointer; }
+    .utility button { background: var(--paper); border:1px solid #dfd2c6; color:var(--ink); flex: 1; }
+    .utility .share { flex:1.2; color:#fff; background:#9a6251; border: 1px solid #9a6251; }
+    .birth-note { margin-top:24px; background:var(--paper); border:1px solid var(--line); border-radius:17px; padding:17px 18px; color:#63564f; }
+    .birth-note summary { cursor:pointer; font-size:calc(16px * var(--scale)); font-weight:800; padding: 2px; }
+    .birth-note p { font-size:calc(15px * var(--scale)); line-height:1.85; word-break:keep-all; margin:14px 0 0; }
+    footer { text-align:center; color:#888079; font-size: 13px; line-height:1.8; margin: 26px auto 0; max-width: 500px; }
+    .toast { position:fixed; bottom: calc(24px + env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%); background:#38352f; color:white; border-radius:13px; padding: 13px 18px; font-size: 16px; font-weight: 700; white-space: nowrap; z-index: 3; box-shadow:var(--shadow); }
+    .toast[hidden] { display:none; }
+    @media (max-width: 460px) {
+      .container { width: min(100% - 24px, 660px); padding-top: 12px; }
+      .masthead { padding: 18px 0 20px; }
+      .hero { padding: 28px 21px 26px; }
+      .grid { grid-template-columns: 1fr; }
+      .fortune-card { padding: 21px; }
+      .fortune-card .icon { display:inline-block; margin: 0 9px 0 0; vertical-align: middle; }
+      .fortune-card h3 { display:inline-block; vertical-align:middle; }
+      .fortune-card p { margin-top: 13px; }
+      .day-picker button { min-width: 65px; }
+      .utility { flex-direction:column; }
+    }
+    @media (prefers-reduced-motion: no-preference) { .day-picker button,.utility button,.share { transition: background .15s ease, transform .15s ease; } button:active { transform:scale(.975); } }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="masthead">
+      <p class="eyebrow">A LITTLE LUCK, EVERY DAY</p>
+      <h1>엄마의 오늘 <span aria-hidden="true">✿</span></h1>
+      <p class="subtitle">1958년 5월 27일생 어머니의 하루 운세</p>
+      <div class="profile" aria-label="어머니의 생일과 태어난 시간, 띠, 별자리">
+        <span>🎂 양력 1958. 5. 27.</span>
+        <span>☀️ 오전 11:30 · 오시(午時)</span>
+        <span>🐕 개띠</span>
+        <span>♊ 쌍둥이자리</span>
+        <span>📍 전주 중노송동 출생</span>
+      </div>
+    </header>
+
+    <noscript><div class="offline-note">📅 이 화면은 저장 당시의 오늘 운세예요. 매일 새 운세를 보려면 HTML 파일을 Safari나 Chrome에서 직접 열어주세요.</div></noscript>
+    <nav class="day-picker" aria-label="운세 날짜 선택">
+      <button type="button" data-day="-1" aria-pressed="false">어제</button>
+      <button type="button" data-day="0" aria-pressed="true">오늘</button>
+      <button type="button" data-day="1" aria-pressed="false">내일</button>
+    </nav>
+
+    <div class="date-line" id="dateText" aria-live="polite">2026년 10월 8일 목요일</div>
+    <div class="birthday" id="birthdayMsg" hidden>🎉 생일을 축하드려요!<br>오늘은 어머니가 가장 빛나는 날이에요. 🌷</div>
+
+    <section class="hero" aria-labelledby="mainTitle">
+      <div class="sun" aria-hidden="true">☀</div>
+      <div class="pill" id="dayTag">오늘의 총운</div>
+      <h2 id="mainTitle">느긋한 여유가 필요한 날</h2>
+      <p id="mainText">잠깐 쉬어 가는 시간이 오히려 하루를 풍성하게 해줘요. 따뜻한 차 한 잔이 잘 어울려요.</p>
+    </section>
+
+    <div class="divider" aria-hidden="true">✦ 나의 하루 살펴보기 ✦</div>
+
+    <section class="grid" aria-label="분야별 운세">
+      <article class="fortune-card"><span class="icon" aria-hidden="true">🌿</span><h3>건강운</h3><p id="healthText">할 일이 많아도 무리하지 마세요. 오늘의 목표는 기분 좋게 하루 보내기예요.</p></article>
+      <article class="fortune-card"><span class="icon" aria-hidden="true">💰</span><h3>재물운</h3><p id="moneyText">작은 절약 하나를 실천해 보세요. 무리하지 않아도 뿌듯함을 느낄 수 있어요.</p></article>
+      <article class="fortune-card"><span class="icon" aria-hidden="true">💗</span><h3>가족운</h3><p id="familyText">밥은 먹었니, 잘 지내니 같은 평범한 말이 오늘은 더 따뜻하게 느껴질 거예요.</p></article>
+      <article class="fortune-card"><span class="icon" aria-hidden="true">🌷</span><h3>행운의 기운</h3><p id="moodText">밝은 색 옷이나 손수건이 하루에 산뜻함을 더해줄 거예요.</p></article>
+    </section>
+
+    <section class="zodiac" aria-labelledby="zodiacTitle">
+      <h3 id="zodiacTitle">🐕 개띠 어머니의 오늘</h3>
+      <p id="dogText">성실함도 좋지만 쉬는 것도 중요해요. 편안한 휴식에 죄책감을 느끼지 않아도 좋아요.</p>
+      <p class="sign-line" id="geminiText">♊ 쌍둥이자리의 한마디 · 안부를 묻는 전화 한 통이 서로에게 반가운 선물이 될 수 있어요.</p>
+      <p class="hour-line" id="hourText">🌤️ 오시의 한마디 · 마음속에 반짝이는 작은 바람을 하나 실천해 보세요.</p>
+    </section>
+
+    <section class="bottom-card" aria-labelledby="wisdomTitle">
+      <h3 class="small-title" id="wisdomTitle">✉ 오늘의 좋은 말</h3>
+      <p id="quoteText">기쁨은 나눌수록 커지고, 걱정은 나눌수록 가벼워져요.</p>
+    </section>
+    <div class="lucky" aria-label="오늘의 행운 아이템">
+      <span id="colorText">🎨 행운의 색 · 분홍색</span><span id="itemText">✨ 행운의 물건 · 꽃무늬 손수건</span>
+    </div>
+
+    <div class="utility">
+      <button id="fontBtn" type="button" aria-pressed="false">가<span aria-hidden="true">＋</span> 글씨 크게</button>
+      <button class="share" id="shareBtn" type="button">💌 운세 공유하기</button>
+    </div>
+
+    <details class="birth-note">
+      <summary>🌼 태어난 시간과 사주 계산 안내</summary>
+      <p>어머니의 출생 시각은 가족이 확인한 <strong>오전 11시 30분, 오시(午時)</strong>로 표시했어요. 앱에서는 사시(巳時)로 바꾸거나 임의로 시간을 보정하지 않아요.</p>
+      <p>양력 1958년 5월 27일 출생, 출생지는 <strong>전주시 완산구 중노송동</strong>으로 확인했어요. 과거 서머타임 및 시각 보정 방식에 따라 전문 만세력의 시주 해석은 달라질 수 있지만, 이 앱의 표기는 확인하신 오시를 따릅니다.</p>
+    </details>
+
+    <footer>
+      오늘을 기분 좋게 시작하기 위한 작은 이야기예요.<br>
+      생일·띠·별자리·태어난 시간을 활용한 재미와 응원의 글이에요. 실제 미래를 예측하거나 사주팔자를 계산한 내용은 아닙니다.<br>건강과 돈에 관한 중요한 결정은 실제 정보를 확인해주세요.<br>
+      <span>매일 자정(한국 시간)에 새로운 운세가 열려요.</span>
+    </footer>
+  </main>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script>
+    'use strict';
+    const contents = {
+      overall: [
+        ['기쁜 일이 조용히 찾아오는 날', '큰 변화가 없어도 마음이 편안해지는 하루예요. 평소 좋아하던 일을 하나 해보면 작은 만족이 오래 남을 거예요.'],
+        ['서두르지 않아도 좋은 날', '오늘은 빠르게 움직이는 것보다 차근차근 해나가는 것이 어울려요. 나만의 속도를 지켜보세요.'],
+        ['따뜻한 말이 행운이 되는 날', '짧은 안부 한마디가 생각보다 큰 기쁨을 줄 수 있어요. 반가운 사람에게 먼저 연락해 보세요.'],
+        ['마음에 햇살이 드는 날', '걱정은 잠시 내려놓고 눈앞의 작은 즐거움부터 찾아보세요. 오늘의 좋은 순간이 더 선명해질 거예요.'],
+        ['소소한 발견이 반가운 날', '익숙한 길과 일상에서도 새로운 아름다움을 만날 수 있어요. 주변을 천천히 둘러보세요.'],
+        ['함께하면 더 즐거운 날', '혼자 해도 좋지만 누군가와 기쁨을 나누면 더 특별해져요. 가벼운 만남이나 통화가 잘 어울려요.'],
+        ['마음이 한결 가벼워지는 날', '오래 마음에 두었던 일을 조금 정리하기 좋아요. 작게 시작해도 충분히 좋은 진전이에요.'],
+        ['작은 칭찬이 힘이 되는 날', '오늘만큼은 스스로에게도 고맙다고 말해 주세요. 그동안 해낸 일들이 생각보다 많답니다.'],
+        ['느긋한 여유가 필요한 날', '잠깐 쉬어 가는 시간이 오히려 하루를 풍성하게 해줘요. 따뜻한 차 한 잔이 잘 어울려요.'],
+        ['웃을 일이 하나 더 생기는 날', '가벼운 농담이나 즐거운 이야기가 기분을 밝게 해줄 거예요. 웃음을 아끼지 마세요.'],
+        ['마음먹은 일을 시작하기 좋은 날', '거창한 계획보다 지금 할 수 있는 작은 일 하나가 중요해요. 첫걸음을 내디뎌 보세요.'],
+        ['내 편이 있다는 걸 느끼는 날', '주변의 다정한 마음이 힘이 되어줄 수 있어요. 도움이 필요하다면 편하게 이야기해 보세요.'],
+        ['좋은 기억이 떠오르는 날', '오래된 사진이나 추억을 꺼내보세요. 미소 짓게 하는 순간이 하루를 따뜻하게 채워줄 거예요.'],
+        ['단정한 시작이 기분 좋은 날', '책상이나 식탁 위를 가볍게 정리해 보세요. 공간이 산뜻해지면 마음도 정돈될 거예요.'],
+        ['평범해서 더 소중한 날', '특별한 사건이 없어도 좋은 하루예요. 익숙한 풍경과 일상의 편안함을 마음껏 누려보세요.'],
+        ['고마운 인연이 빛나는 날', '가까운 사람의 장점을 새삼 발견할 수 있어요. 감사한 마음을 표현하면 기쁨이 커질 거예요.'],
+        ['기분 좋은 변화가 어울리는 날', '평소와 조금 다른 차림이나 산책길을 시도해 보세요. 작은 새로움이 활력을 줄 거예요.'],
+        ['정겨운 이야기가 꽃피는 날', '오랜만에 누군가와 옛날이야기를 나눠보세요. 다정한 기억이 큰 선물이 될 거예요.'],
+        ['여유 있게 살피면 좋은 날', '중요한 선택은 한 번 더 확인하고, 가벼운 일은 편한 마음으로 해보세요. 균형이 중요해요.'],
+        ['좋은 마음이 다시 돌아오는 날', '누군가를 배려하는 작은 행동이 내 기분도 환하게 해줘요. 친절을 먼저 건네보세요.'],
+        ['반가운 소식에 귀 기울일 날', '가족이나 친구와 소식을 나누기 좋아요. 뜻밖의 즐거운 이야기가 하루에 활력을 더할 수 있어요.'],
+        ['나를 위한 시간을 선물할 날', '오늘은 나를 먼저 챙겨도 괜찮아요. 좋아하는 음악을 듣거나 편히 쉬며 재충전해 보세요.'],
+        ['천천히 무르익는 좋은 날', '지금 하는 일이 더디게 느껴져도 차분히 이어가 보세요. 오늘의 노력 자체가 소중해요.'],
+        ['반짝이는 작은 행복을 찾는 날', '맛있는 음식, 고운 하늘, 익숙한 노래처럼 작은 즐거움이 가까이에 있어요. 하나씩 누려보세요.'],
+        ['마음의 문을 활짝 열어볼 날', '새로운 생각이나 다른 의견도 편히 들어보세요. 예상 못 한 좋은 아이디어를 얻을 수 있어요.'],
+        ['기대보다 편안함이 더 좋은 날', '완벽하려 애쓰지 않아도 괜찮아요. 무리하지 않고 즐겁게 하루를 보내는 데 집중해 보세요.'],
+        ['다정한 인사가 어울리는 날', '마주치는 사람에게 먼저 미소를 건네보세요. 짧은 인사가 따뜻한 하루를 만들어줘요.'],
+        ['지난 노력을 돌아보기 좋은 날', '이미 해낸 일들을 하나씩 떠올려 보세요. 스스로의 성실함을 인정하면 자신감이 자랄 거예요.']
+      ],
+      health: [
+        '몸을 가볍게 움직여 보세요. 무리하지 않는 짧은 산책이 기분 전환에 좋아요.',
+        '따뜻한 물 한 잔으로 하루를 시작해 보세요. 잠깐의 여유도 소중해요.',
+        '오늘은 충분히 쉬는 시간을 챙겨보세요. 바쁜 일 사이의 휴식이 필요해요.',
+        '오래 앉아 있었다면 가볍게 몸을 풀어주세요. 편안한 움직임이 좋아요.',
+        '바깥 공기를 잠깐 쐬어보세요. 날씨에 맞게 옷차림도 살펴보세요.',
+        '평소 즐기던 건강한 식사를 천천히 맛보세요. 식사 시간이 작은 쉼표가 돼요.',
+        '오늘은 편한 신발을 신고 가볍게 걸어보세요. 내 몸의 속도에 맞추면 돼요.',
+        '잠들기 전 조용한 시간을 만들어 보세요. 편안한 저녁이 기다리고 있어요.',
+        '집안일을 하다가도 가끔 쉬어가세요. 모든 걸 한 번에 끝낼 필요는 없어요.',
+        '기지개를 한 번 쭉 켜보세요. 작은 움직임으로도 기분이 산뜻해질 수 있어요.',
+        '오늘은 몸이 보내는 신호에 귀 기울여 주세요. 피곤하다면 충분히 쉬세요.',
+        '햇빛이 좋은 날이라면 잠깐 밖을 둘러보세요. 편안한 기분 전환이 될 수 있어요.',
+        '평소 익숙한 생활 리듬을 지켜보세요. 규칙적인 하루가 마음을 편하게 해줘요.',
+        '따뜻한 차와 함께 잠시 앉아 쉬어보세요. 평온한 시간이 도움이 될 거예요.',
+        '어깨에 힘을 빼고 천천히 숨을 쉬어보세요. 한결 느긋해질 수 있어요.',
+        '할 일이 많아도 무리하지 마세요. 오늘의 목표는 기분 좋게 하루 보내기예요.',
+        '가벼운 스트레칭으로 하루를 열어보세요. 불편하면 억지로 하지 않아도 돼요.',
+        '식사를 서두르지 말고 천천히 즐겨보세요. 좋은 대화가 곁들이면 더 좋아요.',
+        '잠깐 눈을 쉬게 하고 먼 풍경을 바라보세요. 작은 휴식이 반가운 날이에요.',
+        '오늘은 무엇보다 편안함을 우선해 보세요. 나에게 맞는 속도가 가장 좋아요.',
+        '산책을 한다면 익숙하고 안전한 길을 골라보세요. 가볍게 다녀오면 충분해요.',
+        '좋아하는 음악을 틀고 집안에서 가볍게 움직여 보세요. 즐거운 분위기가 좋아요.',
+        '일찍 쉬고 싶은 마음이 든다면 그대로 따라도 좋아요. 휴식은 중요한 약속이에요.',
+        '몸과 마음이 함께 쉬는 시간을 만들어 보세요. 아무것도 하지 않아도 괜찮아요.'
+      ],
+      money: [
+        '오늘은 필요한 것부터 차분히 살펴보세요. 꼼꼼한 선택이 만족을 높여줘요.',
+        '작은 지출을 한 번 돌아보는 날로 삼아보세요. 가계부 한 줄도 좋은 시작이에요.',
+        '충동구매보다는 장바구니에 담아두고 다시 생각해 보는 여유가 좋아요.',
+        '이미 가진 물건의 가치를 새삼 느낄 수 있어요. 오래 아끼는 즐거움을 찾아보세요.',
+        '가격보다 내게 정말 필요한 물건인지 생각해 보세요. 좋은 소비의 기준이 돼요.',
+        '뜻밖의 할인보다 계획해 둔 지출을 먼저 챙기면 마음이 편해져요.',
+        '작은 절약 하나를 실천해 보세요. 무리하지 않아도 뿌듯함을 느낄 수 있어요.',
+        '미뤄둔 영수증이나 납부 일정을 가볍게 정리해 보세요. 마음이 개운해질 거예요.',
+        '오늘은 큰 금전 결정보다 필요한 정보를 충분히 살피는 데 시간을 써보세요.',
+        '친구와 함께하는 소박한 차 한 잔처럼 돈보다 추억에 남는 시간을 찾아보세요.',
+        '집에 있는 재료를 활용해 맛있는 한 끼를 만들어 보세요. 알뜰한 즐거움이 있어요.',
+        '지갑 속 오래된 영수증을 정리해 보세요. 작은 정리가 가벼운 마음을 줘요.',
+        '소비 계획을 한 번 적어보세요. 생각이 정리되면 선택도 쉬워질 수 있어요.',
+        '당장 필요하지 않은 물건은 하루쯤 기다려 보세요. 마음에 여유가 생겨요.',
+        '좋아하는 사람에게 꼭 비싼 선물을 할 필요는 없어요. 따뜻한 말도 좋은 선물이에요.',
+        '오늘은 지출보다 만족을 생각해 보세요. 내가 좋아하는 작은 기쁨을 찾아보세요.',
+        '계획한 예산 안에서 기분 좋은 선택을 해보세요. 차분함이 잘 어울리는 날이에요.',
+        '주변의 좋은 정보도 참고하되 중요한 금융 선택은 직접 확인하는 것이 좋아요.',
+        '잠깐 시간을 내어 정기 지출 항목을 살펴보세요. 작은 정리가 도움이 될 수 있어요.',
+        '새로운 상품은 조건을 자세히 읽어보세요. 서두르지 않는 선택이 좋아요.',
+        '오늘은 가진 것에 감사하는 마음을 가져보세요. 마음의 넉넉함도 큰 재산이에요.',
+        '할인 문구에 마음이 급해지면 잠시 멈춰 보세요. 내게 필요한 것이 먼저예요.',
+        '꾸준히 실천하는 작은 절약이 잘 어울려요. 부담 없는 목표로 시작해 보세요.',
+        '소중한 사람과의 시간에 더 큰 가치를 둬보세요. 오래 남는 행복이 될 거예요.',
+        '금전 문제는 혼자 급히 판단하기보다 믿을 만한 사람과 상의해 보세요.'
+      ],
+      family: [
+        '가족에게 먼저 안부를 물어보세요. 짧은 통화 하나가 마음을 따뜻하게 해줄 거예요.',
+        '서로의 이야기를 끝까지 들어주면 더 다정한 시간이 될 수 있어요.',
+        '가족과 함께 좋아하는 음식을 떠올려 보세요. 소소한 대화거리가 생길 거예요.',
+        '오늘은 고맙다는 말을 한 번 더 건네보세요. 가까운 사이일수록 큰 힘이 돼요.',
+        '오래된 가족사진을 들여다보세요. 반가운 추억이 미소를 가져다줄 거예요.',
+        '바쁘더라도 마음을 전하는 짧은 메시지를 보내보세요. 정은 작은 행동에서 커져요.',
+        '가족의 작은 기쁨을 함께 축하해 주세요. 좋은 기분이 오래 남을 수 있어요.',
+        '상대의 생각이 달라도 천천히 들어보세요. 이해하는 마음이 관계를 편안하게 해줘요.',
+        '누군가의 수고에 고맙다고 말해보세요. 평범한 하루가 조금 특별해질 거예요.',
+        '편안한 목소리로 안부를 전해보세요. 멀리 있어도 마음은 가까워질 수 있어요.',
+        '함께 웃었던 기억을 떠올려 보세요. 추억을 나누는 것만으로도 좋은 시간이 돼요.',
+        '가족에게 작은 응원의 말을 건네보세요. 따뜻한 한마디는 오래 남아요.',
+        '서로의 하루를 묻고 들어보세요. 별일 없는 이야기에도 다정함이 담겨 있어요.',
+        '오늘은 가까운 사람에게 먼저 미소를 지어보세요. 분위기가 한결 밝아질 거예요.',
+        '가족에게 기대하는 마음만큼 서로 다른 속도도 존중해 주세요. 편안함이 생겨요.',
+        '좋아하는 사람의 건강과 안부를 살펴보세요. 작은 관심이 사랑을 전해줘요.',
+        '함께 차를 마시거나 산책할 기회가 있다면 즐겨보세요. 소박한 동행이 좋아요.',
+        '오늘은 가족에게 듣고 싶은 말부터 먼저 해보세요. 다정한 대화가 시작될 거예요.',
+        '괜히 쑥스러워도 사랑한다는 마음을 표현해 보세요. 그 자체로 귀한 선물이에요.',
+        '가족에게 재미있는 이야기를 들려주세요. 웃음을 나누는 시간이 소중해요.',
+        '서로 바쁜 날엔 짧은 인사만 나눠도 충분해요. 마음이 전해진다면 좋은 거예요.',
+        '가족과 지난 추억을 함께 떠올려 보세요. 반가운 이야기가 이어질 수 있어요.',
+        '내 마음도 소중히 살피면서 가까운 사람을 챙겨보세요. 균형이 좋은 날이에요.',
+        '밥은 먹었니, 잘 지내니 같은 평범한 말이 오늘은 더 따뜻하게 느껴질 거예요.',
+        '작은 오해가 있다면 부드럽게 풀어보세요. 상대의 이야기를 먼저 듣는 것이 좋아요.',
+        '가족과 오늘 있었던 좋은 일 하나를 나눠보세요. 기분 좋은 마무리가 될 거예요.'
+      ],
+      mood: [
+        '창밖 하늘을 한번 올려다보세요. 기분 좋은 여유가 찾아올 거예요.',
+        '좋아하는 노래 한 곡이 오늘의 작은 선물이 되어줄 거예요.',
+        '평소 좋아하는 간식을 천천히 즐겨보세요. 그 시간도 행복이에요.',
+        '꽃이나 나무를 바라보며 잠깐 쉬어보세요. 마음이 한결 편해질 수 있어요.',
+        '밝은 색 옷이나 손수건이 하루에 산뜻함을 더해줄 거예요.',
+        '오래 듣지 못한 노래를 찾아보세요. 반가운 기억이 떠오를 수 있어요.',
+        '창문을 열고 맑은 공기를 느껴보세요. 오늘을 새롭게 시작하는 기분이에요.',
+        '나만의 편안한 의자에 앉아 조용한 시간을 즐겨보세요.',
+        '오늘의 기쁜 순간을 마음속에 한 가지 남겨보세요. 좋은 기록이 될 거예요.',
+        '길에서 예쁜 풍경을 발견하면 사진 한 장 남겨보세요. 추억이 될 수 있어요.',
+        '좋아하는 향기를 가까이 두어보세요. 익숙한 편안함이 찾아올 거예요.',
+        '잘 웃는 사람과 대화해 보세요. 기분 좋은 에너지를 나눌 수 있어요.',
+        '따뜻한 햇살이나 시원한 바람을 느끼며 잠깐 쉬어가세요.',
+        '평소 아끼던 컵에 차를 담아보세요. 소소한 기쁨이 시작될 거예요.',
+        '작은 꽃 한 송이에도 하루가 환해질 수 있어요. 가까운 아름다움을 찾아보세요.',
+        '늘 지나던 길에서 다른 풍경을 찾아보세요. 반가운 새로움이 있어요.',
+        '오래된 친구의 목소리를 떠올려 보세요. 안부 한마디가 즐거움을 줄 거예요.',
+        '창가에서 여유롭게 시간을 보내보세요. 조용한 순간에도 행복이 숨어 있어요.',
+        '평소 좋아하는 음식을 맛보는 시간이 오늘의 작은 행운이에요.',
+        '내가 좋아하는 것 세 가지를 떠올려 보세요. 기분이 밝아질 수 있어요.',
+        '따뜻한 인사로 하루를 시작해 보세요. 미소는 나눌수록 커져요.',
+        '오늘 하루의 좋은 일을 찾아보세요. 생각보다 가까운 곳에 있을 거예요.',
+        '시간이 허락하면 책 몇 쪽을 읽어보세요. 조용한 재미가 기다리고 있어요.',
+        '좋아하는 색을 주변에서 찾아보세요. 작은 발견이 즐거움이 될 거예요.'
+      ],
+      quotes: [
+        '행복은 멀리 있는 큰 선물이 아니라, 오늘 곁에 있는 작은 기쁨이에요.',
+        '오래 피는 꽃처럼, 좋은 날들은 천천히 찾아와도 괜찮아요.',
+        '나에게 건네는 친절한 한마디가 하루를 바꿔줄 수 있어요.',
+        '오늘 하루도 충분히 소중하고, 나는 그 하루의 주인공이에요.',
+        '잘 해온 날들처럼 오늘도 나만의 속도로 걸어가면 돼요.',
+        '평범한 하루를 사랑할 수 있다면 매일 작은 선물을 받는 셈이에요.',
+        '기쁨은 나눌수록 커지고, 걱정은 나눌수록 가벼워져요.',
+        '조금 쉬어가도 괜찮아요. 쉬는 시간에도 삶은 아름다워요.',
+        '오늘의 미소 하나가 내일의 좋은 기억이 될 수 있어요.',
+        '가까운 행복을 알아보는 마음이 가장 큰 행운이에요.',
+        '어제보다 느리게 가더라도 오늘의 걸음은 의미가 있어요.',
+        '나를 아끼는 것이 주변을 더 따뜻하게 만드는 시작이에요.',
+        '좋은 하루는 완벽한 하루가 아니라 마음이 편안한 하루예요.',
+        '작은 감사 하나가 하루 전체를 부드럽게 밝혀줄 수 있어요.',
+        '오늘 마음에 남는 좋은 말 한마디를 스스로에게 들려주세요.',
+        '햇살이 구름 뒤에 있어도 하늘은 언제나 그 자리에 있어요.',
+        '웃을 일이 있어서 웃기도 하지만, 웃으며 좋은 일을 찾기도 해요.',
+        '익숙한 풍경도 여유 있게 보면 새로운 아름다움이 보여요.',
+        '내가 쌓아온 세월만큼 삶에는 따뜻한 이야기가 많아요.',
+        '누군가에게 다정했던 만큼 오늘은 나에게도 다정해지세요.',
+        '작은 기쁨을 놓치지 않는 마음은 언제나 젊어요.',
+        '하루에 하나만 행복해도 충분히 좋은 하루예요.',
+        '소중한 사람에게 전한 마음은 오래도록 남는 선물이에요.',
+        '오늘도 여기까지 걸어온 나에게 박수를 보내주세요.'
+      ]
+    };
+    // 개띠 및 쌍둥이자리 문구도 오락과 응원 목적으로 작성했습니다.
+    const dogNotes = [
+      '개띠의 든든한 성실함을 스스로에게도 나눠주세요. 오늘은 내 마음을 먼저 돌보는 것이 좋아요.',
+      '평소 책임감 있게 해온 일들에 스스로 박수를 보내주세요. 작은 쉼도 소중한 하루의 일부예요.',
+      '주변 사람을 아끼는 따뜻함이 큰 장점이에요. 오늘은 다정한 말을 자신에게도 건네보세요.',
+      '잘 챙겨온 일상 속에서 기쁜 순간 하나를 찾아보세요. 소소한 만족이 마음을 채워줄 거예요.',
+      '익숙한 사람과의 편안한 대화가 잘 어울려요. 안부 한마디로 정을 나눠보세요.',
+      '오늘은 서두르지 말고 하나씩 해보세요. 꾸준함이라는 좋은 힘이 이미 있으니까요.',
+      '누군가를 도울 때처럼 나에게도 친절해 보세요. 하루가 한결 부드러워질 거예요.',
+      '오래도록 지켜온 소중한 것들을 떠올려 보세요. 오늘의 기쁨을 만드는 힘이 될 수 있어요.',
+      '성실함도 좋지만 쉬는 것도 중요해요. 편안한 휴식에 죄책감을 느끼지 않아도 좋아요.',
+      '작은 약속 하나를 지키면 마음이 든든해질 거예요. 나만의 속도를 믿어보세요.',
+      '주변의 좋은 마음을 기꺼이 받아보세요. 늘 챙겨주는 사람도 따뜻한 배려를 받을 자격이 있어요.',
+      '많은 일을 한 번에 하려 하기보다 중요한 것 한 가지를 정해보세요. 마음이 가벼워질 거예요.',
+      '힘들었던 일보다 해낸 일을 먼저 떠올려 보세요. 오늘도 쌓이는 시간이 귀해요.',
+      '다정한 마음이 모이면 평범한 하루도 특별해져요. 웃음 한 번을 더 나눠보세요.'
+    ];
+    const geminiNotes = [
+      '♊ 쌍둥이자리의 한마디 · 반가운 사람에게 작은 소식을 전해 보세요. 다정한 대화가 하루를 밝힐 수 있어요.',
+      '♊ 쌍둥이자리의 한마디 · 새로 알게 된 흥미로운 이야기를 가족과 나눠보세요.',
+      '♊ 쌍둥이자리의 한마디 · 호기심이 생기는 일을 가볍게 알아보는 재미를 즐겨보세요.',
+      '♊ 쌍둥이자리의 한마디 · 생각이 많아질 땐 이야기를 적어두고 잠시 쉬어가도 좋아요.',
+      '♊ 쌍둥이자리의 한마디 · 안부를 묻는 전화 한 통이 서로에게 반가운 선물이 될 수 있어요.',
+      '♊ 쌍둥이자리의 한마디 · 익숙한 장소에서도 새로운 즐거움을 찾아보세요.',
+      '♊ 쌍둥이자리의 한마디 · 하고 싶은 이야기가 있다면 서두르지 않고 차근차근 전해보세요.',
+      '♊ 쌍둥이자리의 한마디 · 좋아하는 책이나 방송에서 작은 배움의 기쁨을 느껴보세요.',
+      '♊ 쌍둥이자리의 한마디 · 오늘의 재미있는 발견 하나를 기억해 두세요.',
+      '♊ 쌍둥이자리의 한마디 · 가벼운 대화 속에서 기분 좋은 웃음이 생길 수 있어요.',
+      '♊ 쌍둥이자리의 한마디 · 바쁠수록 나만의 조용한 시간도 챙기면 좋아요.',
+      '♊ 쌍둥이자리의 한마디 · 생각을 나누고 마음을 듣는 따뜻한 하루를 만들어 보세요.'
+    ];
+    // 가족이 확인한 오전 11:30과 오시(午時)를 그대로 사용합니다.
+    // 아래의 오시 관련 문구는 시주 분석이 아닌 오락용 응원 문구입니다.
+    const hourNotes = [
+      '🌤️ 오시의 한마디 · 낮 햇살처럼 밝은 인사 하나가 오늘을 기분 좋게 밝혀줄 거예요.',
+      '🌤️ 오시의 한마디 · 활기찬 마음도 좋지만, 쉬고 싶은 순간에는 편안히 쉬어가세요.',
+      '🌤️ 오시의 한마디 · 마음속에 반짝이는 작은 바람을 하나 실천해 보세요.',
+      '🌤️ 오시의 한마디 · 내가 좋아하는 시간을 소중히 여기면 하루가 더 풍성해져요.',
+      '🌤️ 오시의 한마디 · 다정한 말을 건네는 순간, 평범한 오늘도 따뜻해질 수 있어요.',
+      '🌤️ 오시의 한마디 · 집 안에 환한 빛을 들이고 작은 기분 전환을 즐겨보세요.',
+      '🌤️ 오시의 한마디 · 소중한 사람들과 웃음을 나누며 여유를 찾아보세요.',
+      '🌤️ 오시의 한마디 · 앞만 보며 달리지 말고 지금의 행복도 돌아봐 주세요.',
+      '🌤️ 오시의 한마디 · 말 한마디의 온기가 생각보다 오래 마음에 남을 거예요.',
+      '🌤️ 오시의 한마디 · 평범한 순간에도 고마운 일을 하나씩 찾아보세요.',
+      '🌤️ 오시의 한마디 · 부드러운 햇살을 닮은 느긋한 하루를 선물해 보세요.',
+      '🌤️ 오시의 한마디 · 밝은 마음으로 시작하되, 어떤 기분이든 그대로 존중해 주세요.'
+    ];
+    const birth = Object.freeze({year:1958, month:5, day:27, hour:11, minute:30, hourBranch:'오시(午時)', location:'전주시 완산구 중노송동', zodiac:'개띠', sign:'쌍둥이자리'});
+    const birthdaySeed = Number(`${birth.year}${String(birth.month).padStart(2,'0')}${String(birth.day).padStart(2,'0')}`) + birth.hour * 60 + birth.minute;
+    const colors = ['살구색', '연두색', '하늘색', '연보라색', '분홍색', '크림색', '연노랑색', '코랄색'];
+    const items = ['따뜻한 차 한 잔', '꽃무늬 손수건', '좋아하는 노래', '작은 수첩', '편안한 운동화', '가족사진', '예쁜 머그잔', '싱그러운 꽃'];
+    const dayWords = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
+    const byId = (id) => document.getElementById(id);
+    // Locale-formatted dates are not guaranteed to be YYYY-MM-DD on iOS/Safari.
+    // Extract the calendar fields directly, so the date does not become NaN.
+    const seoulDay = () => {
+      try {
+        const parts = new Intl.DateTimeFormat('en-US', {timeZone:'Asia/Seoul', year:'numeric', month:'2-digit', day:'2-digit'}).formatToParts(new Date());
+        const fields = {};
+        for (const part of parts) if (part.type === 'year' || part.type === 'month' || part.type === 'day') fields[part.type] = part.value;
+        if (fields.year && fields.month && fields.day) return `${fields.year}-${fields.month}-${fields.day}`;
+      } catch (e) { /* The HTML still contains a readable daily fortune. */ }
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+    };
+    const dayFromIso = (iso) => { const [y,m,d] = iso.split('-').map(Number); return Math.floor(Date.UTC(y,m-1,d)/86400000); };
+    const dateFromDay = (n) => new Date(n * 86400000);
+    const pick = (a, day, step, offset) => a[((day * step + offset) % a.length + a.length) % a.length];
+    let offset = 0;
+    let currentDay = 0;
+    let currentData = null;
+    let lastToday = seoulDay();
+    const titleByOffset = { '-1':'어제의 총운', '0':'오늘의 총운', '1':'내일의 총운' };
+    function render() {
+      const baseDay = dayFromIso(seoulDay());
+      currentDay = baseDay + offset;
+      const date = dateFromDay(currentDay);
+      const y = date.getUTCFullYear(); const m = date.getUTCMonth()+1; const d = date.getUTCDate();
+      const dayName = dayWords[date.getUTCDay()];
+      const overall = pick(contents.overall, currentDay, 9, 17 + birthdaySeed);
+      currentData = {
+        date: `${y}년 ${m}월 ${d}일 ${dayName}`,
+        title: overall[0], overall: overall[1],
+        health: pick(contents.health, currentDay, 7, 4 + birthdaySeed),
+        money: pick(contents.money, currentDay, 9, 8 + birthdaySeed),
+        family: pick(contents.family, currentDay, 11, 2 + birthdaySeed),
+        mood: pick(contents.mood, currentDay, 5, 13 + birthdaySeed),
+        quote: pick(contents.quotes, currentDay, 7, 19 + birthdaySeed),
+        color: pick(colors, currentDay, 3, 1 + birthdaySeed), item:pick(items, currentDay, 5, 2 + birthdaySeed),
+        dog: pick(dogNotes, currentDay, 5, 3 + birthdaySeed),
+        gemini: pick(geminiNotes, currentDay, 7, 5 + birthdaySeed),
+        hourNote: pick(hourNotes, currentDay, 5, 11 + birthdaySeed)
+      };
+      byId('dateText').textContent = currentData.date;
+      byId('dayTag').textContent = titleByOffset[String(offset)];
+      byId('mainTitle').textContent = currentData.title;
+      byId('mainText').textContent = currentData.overall;
+      byId('healthText').textContent = currentData.health;
+      byId('moneyText').textContent = currentData.money;
+      byId('familyText').textContent = currentData.family;
+      byId('moodText').textContent = currentData.mood;
+      byId('dogText').textContent = currentData.dog;
+      byId('geminiText').textContent = currentData.gemini;
+      byId('hourText').textContent = currentData.hourNote;
+      byId('birthdayMsg').hidden = !(m === birth.month && d === birth.day);
+      byId('quoteText').textContent = currentData.quote;
+      byId('colorText').textContent = `🎨 행운의 색 · ${currentData.color}`;
+      byId('itemText').textContent = `✨ 행운의 물건 · ${currentData.item}`;
+      document.querySelectorAll('[data-day]').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.day)===offset)));
+      document.title = `${currentData.date} · 엄마의 오늘`;
+    }
+    function setFontSize(isLarge) {
+      document.documentElement.style.setProperty('--scale', isLarge ? '1.17' : '1');
+      const btn = byId('fontBtn');
+      btn.setAttribute('aria-pressed', String(isLarge));
+      btn.textContent = isLarge ? '가− 기본 글씨로' : '가＋ 글씨 크게';
+      try { localStorage.setItem('mom-fortune-big-text', isLarge ? 'true' : 'false'); } catch {}
+    }
+    let toastHide;
+    function toast(message) {
+      const t = byId('toast'); t.textContent = message; t.hidden = false;
+      clearTimeout(toastHide); toastHide = setTimeout(() => { t.hidden = true; }, 2300);
+    }
+    async function share() {
+      const c = currentData;
+      const body = `🌸 엄마의 오늘 · ${c.date}\n\n${c.title}\n${c.overall}\n\n🌿 건강운: ${c.health}\n💰 재물운: ${c.money}\n💗 가족운: ${c.family}\n🌷 행운의 기운: ${c.mood}\n\n🐕 개띠 어머니: ${c.dog}\n${c.gemini}\n${c.hourNote}\n\n✉ ${c.quote}\n🎨 행운의 색: ${c.color}\n✨ 행운의 물건: ${c.item}`;
+      try {
+        if (navigator.share) { await navigator.share({title:'엄마의 오늘',text:body}); return; }
+        if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(body); toast('운세를 복사했어요'); return; }
+        const tmp = document.createElement('textarea'); tmp.value = body; tmp.style.position='fixed'; tmp.style.opacity='0'; document.body.appendChild(tmp); tmp.select();
+        const ok = document.execCommand('copy'); tmp.remove();
+        if (ok) toast('운세를 복사했어요'); else toast('공유 기능을 사용할 수 없어요');
+      } catch (e) { if (e.name !== 'AbortError') toast('공유 기능을 사용할 수 없어요'); }
+    }
+    document.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click', () => { offset = Number(b.dataset.day); render(); }));
+    byId('fontBtn').addEventListener('click', () => setFontSize(byId('fontBtn').getAttribute('aria-pressed') !== 'true'));
+    byId('shareBtn').addEventListener('click', share);
+    let large = false;
+    try { large = localStorage.getItem('mom-fortune-big-text') === 'true'; } catch {}
+    setFontSize(large);
+    render();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && lastToday !== seoulDay()) { lastToday = seoulDay(); render(); } });
+    window.addEventListener('focus', () => { if (lastToday !== seoulDay()) { lastToday = seoulDay(); render(); } });
+    // 화면을 계속 켜 두어도 한국 시간 자정이 지나면 새 운세를 표시합니다.
+    setInterval(() => { if (lastToday !== seoulDay()) { lastToday = seoulDay(); render(); } }, 30000);
+  </script>
+</body>
+</html>
