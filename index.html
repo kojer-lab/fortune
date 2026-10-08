@@ -185,12 +185,6 @@
 
     <noscript><div class="offline-note">📅 이 화면은 저장 당시의 오늘 운세예요. 매일 새 운세를 보려면 브라우저에서 자바스크립트를 켜 주세요.</div></noscript>
 
-    <nav class="fortune-tabs" role="tablist" aria-label="운세 메뉴">
-      <button type="button" id="tab-today" role="tab" aria-selected="true" aria-controls="panel-today" tabindex="0" data-view="today">오늘</button>
-      <button type="button" id="tab-saju" role="tab" aria-selected="false" aria-controls="panel-saju" tabindex="-1" data-view="saju">사주</button>
-      <button type="button" id="tab-y2026" role="tab" aria-selected="false" aria-controls="panel-y2026" tabindex="-1" data-view="y2026">2026년</button>
-      <button type="button" id="tab-y2027" role="tab" aria-selected="false" aria-controls="panel-y2027" tabindex="-1" data-view="y2027">2027년</button>
-    </nav>
     <details class="profile-editor" id="profileEditor">
       <summary>✏️ 내 생년월일 입력 · 변경</summary>
       <form id="profileForm" class="profile-form">
@@ -206,6 +200,12 @@
         <p id="profileStatus" role="status"></p>
       </form>
     </details>
+    <nav class="fortune-tabs" role="tablist" aria-label="운세 메뉴">
+      <button type="button" id="tab-today" role="tab" aria-selected="true" aria-controls="panel-today" tabindex="0" data-view="today">오늘</button>
+      <button type="button" id="tab-saju" role="tab" aria-selected="false" aria-controls="panel-saju" tabindex="-1" data-view="saju">사주</button>
+      <button type="button" id="tab-y2026" role="tab" aria-selected="false" aria-controls="panel-y2026" tabindex="-1" data-view="y2026">2026년</button>
+      <button type="button" id="tab-y2027" role="tab" aria-selected="false" aria-controls="panel-y2027" tabindex="-1" data-view="y2027">2027년</button>
+    </nav>
     <section id="panel-today" class="view" role="tabpanel" aria-labelledby="tab-today">
     <nav class="day-picker" aria-label="운세 날짜 선택">
       <button type="button" data-day="-1" aria-pressed="false">어제</button>
