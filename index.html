@@ -57,7 +57,11 @@
     .sun { width: 80px; height:80px; display: grid; place-items: center; border-radius: 100%; color:#a96738; background:#f8e6cc; margin: 0 auto 19px; font-size: 39px; box-shadow: 0 0 0 9px rgba(251,232,202,.38); }
     .pill { font-size: calc(14px * var(--scale)); font-weight: 750; border: 1px solid #ecd2bc; color: #aa583b; background: #fff4e7; padding: 8px 15px; border-radius: 99px; display:inline-block; margin: 0 auto 15px; }
     h2 { font-size: calc(27px * var(--scale)); line-height: 1.5; word-break: keep-all; letter-spacing: -.055em; margin: 0 auto 15px; font-weight: 850; max-width: 470px; }
-    .hero p { font-size: calc(19px * var(--scale)); line-height: 1.9; letter-spacing: -.025em; word-break: keep-all; margin: 0 auto; max-width: 510px; }
+    /* 긴 총운은 제목만 가운데 두고 본문을 왼쪽 정렬해서 읽기 쉽게 */
+    .hero .hero-reading { width:100%; max-width:560px; margin:22px auto 0; text-align:left; }
+    .hero .hero-reading p { font-size:calc(17px * var(--scale)); line-height:1.8; letter-spacing:-.015em; word-break:keep-all; overflow-wrap:break-word; text-align:left; white-space:normal; margin:0; color:var(--ink); max-width:none; }
+    .hero .hero-reading p + p { margin-top:18px; }
+    @media (max-width:460px) { .hero .hero-reading { margin-top:19px; } .hero .hero-reading p { font-size:calc(17px * var(--scale)); line-height:1.76; } .hero .hero-reading p + p { margin-top:16px; } }
     .divider { display: flex; align-items:center; gap:12px; font-size: 12px; color:#cfaf9e; margin:24px 0 17px; }
     .divider:before, .divider:after { content:''; flex:1; height:1px; background:#e8dcd0; }
     .grid { display:grid; gap: 13px; grid-template-columns: 1fr 1fr; }
@@ -66,7 +70,7 @@
     .fortune-card h3 { font-size: calc(19px * var(--scale)); letter-spacing: -.04em; margin: 0 0 11px; font-weight: 850; }
     .fortune-card p { font-size: calc(17px * var(--scale)); color: #625d58; line-height:1.75; word-break:keep-all; margin:0; }
     /* 여러 문단으로 된 상세 운세를 모바일에서도 읽기 편하게 표시 */
-    .hero p, .fortune-card p, .zodiac p { white-space:pre-line; }
+    .fortune-card p, .zodiac p { white-space:pre-line; }
     .fortune-card p { line-height:1.88; }
     .small-title { display:flex; align-items:center; gap:9px; font-size: calc(18px * var(--scale)); margin: 0 0 13px; }
     .bottom-card { border-radius: 21px; background: var(--sage); padding: 24px; margin-top: 15px; }
@@ -182,11 +186,11 @@
       <div class="sun" aria-hidden="true">☀</div>
       <div class="pill" id="dayTag">오늘의 총운</div>
       <h2 id="mainTitle">느긋한 여유가 필요한 날</h2>
-      <p id="mainText">지금 하는 일이 더디게 느껴져도 차분히 이어가 보세요. 오늘의 노력 자체가 소중해요.
-
-지나온 시간을 떠올리며 스스로를 칭찬할 이유를 찾아보세요. 누구에게나 남에게 보여주지 않은 노력과 마음고생이 있을 거예요.
-
-그 모든 시간을 지나 지금의 하루를 살아가는 것만으로도 의미가 있어요. 오늘은 아쉬웠던 기억보다 내가 잘해낸 순간에 조금 더 시선을 두어보세요.</p>
+      <div id="mainText" class="hero-reading" aria-label="오늘의 총운 상세 풀이">
+        <p>지금 하는 일이 더디게 느껴져도 차분히 이어가 보세요. 오늘의 노력 자체가 소중해요.</p>
+        <p>지나온 시간을 떠올리며 스스로를 칭찬할 이유를 찾아보세요. 누구에게나 남에게 보여주지 않은 노력과 마음고생이 있을 거예요.</p>
+        <p>그 모든 시간을 지나 지금의 하루를 살아가는 것만으로도 의미가 있어요. 오늘은 아쉬웠던 기억보다 내가 잘해낸 순간에 조금 더 시선을 두어보세요.</p>
+      </div>
     </section>
 
     <div class="divider" aria-hidden="true">✦ 나의 하루 살펴보기 ✦</div>
@@ -662,7 +666,15 @@
       byId('dateText').textContent = currentData.date;
       byId('dayTag').textContent = titleByOffset[String(offset)];
       byId('mainTitle').textContent = currentData.title;
-      byId('mainText').textContent = currentData.overall;
+      // 줄바꿈으로 단락을 분리해 가운데 정렬로 인한 어색한 줄바꿈을 방지합니다.
+      const heroBody = byId('mainText');
+      const paragraphs = currentData.overall.split(/\n\n+/).filter(Boolean);
+      heroBody.replaceChildren();
+      paragraphs.forEach(part => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = part.trim();
+        heroBody.appendChild(paragraph);
+      });
       byId('healthText').textContent = currentData.health;
       byId('moneyText').textContent = currentData.money;
       byId('familyText').textContent = currentData.family;
