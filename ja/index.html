@@ -39,15 +39,15 @@ header{text-align:center;padding:18px 0 24px}header h1{font-size:calc(31px * var
  }
 }
 .scroll-to-top{
- position:fixed;right:16px;bottom:calc(22px + env(safe-area-inset-bottom,0px));
- width:55px;height:55px;border:1px solid #d8c4b2;border-radius:18px;
- background:#fffefa;color:#8e5947;box-shadow:0 5px 19px rgba(79,52,31,.19);
- display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
- font:inherit;cursor:pointer;z-index:35;padding:3px;line-height:1.05
+ position:fixed;right:0;bottom:calc(27px + env(safe-area-inset-bottom,0px));
+ width:40px;height:49px;border:1px solid #dccbbb;border-right:0;border-radius:15px 0 0 15px;
+ background:rgba(255,253,248,.87);color:#98624c;box-shadow:-2px 3px 12px rgba(79,52,31,.12);
+ display:flex;align-items:center;justify-content:center;
+ font:inherit;cursor:pointer;z-index:35;padding:0;
+ -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)
 }
 @media(max-width:640px){html.profile-ready .panel{scroll-margin-top:calc(83px + env(safe-area-inset-top,0px))}}
-.scroll-to-top .top-arrow{font-size:25px;font-weight:800;line-height:1}
-.scroll-to-top .top-word{font-size:11px;font-weight:850;letter-spacing:.03em}
+.scroll-to-top .top-arrow{font-size:25px;font-weight:850;line-height:1}
 .scroll-to-top[hidden]{display:none!important}
 .scroll-to-top:focus-visible{outline:3px solid #a46e57;outline-offset:3px}
 @media(min-width:641px){.scroll-to-top{display:none!important}}
@@ -124,7 +124,7 @@ header{text-align:center;padding:18px 0 24px}header h1{font-size:calc(31px * var
 <div class="actions"><button type="button" id="bigger">文字を大きく</button><button type="button" class="primary" id="share">💌 運勢を共有</button><button type="button" id="copyLink">🔗 URLをコピー</button></div>
 <details class="reading"><summary>この運勢について</summary><p>四柱推命や干支、星座の伝統的な象徴を用いた娯楽向けの読み物です。健康や投資、人生の出来事を科学的に予測するものではありません。節気、出生地域、サマータイムによって命式の解釈が異なる場合があります。</p></details>
 <footer>© 今日の運勢 ・ 日々の小さな楽しみのために<br><a href="../" lang="ko">한국어로 보기</a></footer></main>
-<button id="scrollToTop" class="scroll-to-top" type="button" title="ページの先頭へ" aria-label="ページの先頭に戻る" hidden><span class="top-arrow" aria-hidden="true">↑</span><span class="top-word" aria-hidden="true">TOP</span></button>
+<button id="scrollToTop" class="scroll-to-top" type="button" title="ページの先頭へ" aria-label="ページの先頭に戻る" hidden><span class="top-arrow" aria-hidden="true">↑</span></button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.7/lunar.js"></script>
 <script src="./fortune-data.js"></script>
 <script src="./app.js"></script>
