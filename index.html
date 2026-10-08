@@ -645,7 +645,7 @@
       const signs = ['염소자리','물병자리','물고기자리','양자리','황소자리','쌍둥이자리','게자리','사자자리','처녀자리','천칭자리','전갈자리','사수자리'];
       const emoji = ['♑','♒','♓','♈','♉','♊','♋','♌','♍','♎','♏','♐'];
       const limits = [20,19,21,20,21,22,23,23,23,23,22,22];
-      const index = (d < limits[m-1] ? (m+10)%12 : m-1);
+      const index = (m-1 + (d >= limits[m-1] ? 1 : 0)) % 12;
       return {name:signs[index], icon:emoji[index]};
     }
     function hasCalendar() { return typeof Solar!=='undefined' && typeof Lunar!=='undefined'; }
