@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fbf7ee">
+<meta name="description" content="毎日の運勢と四柱推命、2026年・2027年の詳しい読み物">
+<title>今日の運勢 · 毎日の運勢と四柱推命</title>
+<link rel="icon" type="image/webp" sizes="192x192" href="../icon-192.webp">
+<link rel="apple-touch-icon" href="../icon-192.webp">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="今日の運勢">
+<style>
+:root{--bg:#fbf7ee;--paper:#fffefa;--ink:#403a35;--soft:#736d66;--line:#e9ded2;--rose:#a96850;--sage:#edf3e8;--scale:1;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;color-scheme:light}
+*{box-sizing:border-box}html{min-width:320px}body{margin:0;background:radial-gradient(circle at 92% 0%,#f7e8d8,transparent 32%),var(--bg);color:var(--ink);line-height:1.65}button,input,select{font:inherit}button{cursor:pointer}a{color:#9d5c43}main{max-width:830px;margin:0 auto;padding:22px 18px 48px}
+header{text-align:center;padding:18px 0 24px}header h1{font-size:calc(31px * var(--scale));margin:12px 0 5px;letter-spacing:-.05em}header p{margin:0;color:var(--soft);font-size:calc(16px * var(--scale))}.sunicon{display:block;width:76px;height:76px;border-radius:22px;margin:0 auto;object-fit:cover;box-shadow:0 7px 20px #85654a25}
+.langswitch{display:flex;justify-content:flex-end;gap:10px;align-items:center;font-size:calc(14px * var(--scale));color:var(--soft)}.langswitch a{display:inline-block;background:white;border:1px solid #e8d6c8;border-radius:30px;padding:7px 13px;font-weight:750;text-decoration:none}
+.profile-summary{margin:18px auto 0;padding:13px 16px;border-radius:16px;background:#f0f5ec;color:#546448;border:1px solid #e1e9d9;font-size:calc(15px * var(--scale));line-height:1.75}
+.details-profile{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:18px}.details-profile summary{list-style:none;cursor:pointer;text-align:center;min-height:60px;padding:16px;color:#985f48;font-size:calc(18px * var(--scale));font-weight:800}.details-profile summary::-webkit-details-marker{display:none}.details-profile[open] summary{background:#fff5e9;border-bottom:1px solid var(--line)}
+.formgrid{display:grid;gap:14px;padding:19px}.formgrid label{display:grid;gap:6px;font-weight:750;font-size:calc(15px * var(--scale))}.formgrid input,.formgrid select{width:100%;min-width:0;padding:11px;border:1px solid #d9c9bb;border-radius:12px;background:white;color:var(--ink);font-size:calc(17px * var(--scale));min-height:52px}.formgrid input::placeholder{color:#aaa399;opacity:.55;font-weight:400}.formgrid input:focus::placeholder{color:transparent;opacity:0}.formgrid button{background:var(--rose);color:white;border:0;border-radius:13px;min-height:54px;font-weight:800;font-size:calc(17px * var(--scale))}.row2,.row3{display:grid;gap:9px}.row2{grid-template-columns:1fr 1fr}.row3{grid-template-columns:repeat(3,minmax(0,1fr))}.formgrid .check{display:flex;align-items:center;gap:8px}.formgrid .check input{width:22px;height:22px;min-height:22px}.hint{color:#79726d;font-size:calc(14px * var(--scale));line-height:1.8;margin:0}.status{color:#935f45;font-size:calc(14px * var(--scale));font-weight:800;min-height:1em}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;background:white;border:1px solid var(--line);padding:7px;border-radius:19px;margin-bottom:20px}.tabs button{min-height:55px;min-width:0;border:0;background:transparent;border-radius:13px;color:#766960;font-size:calc(16px * var(--scale));font-weight:850;padding:6px 2px}.tabs button[aria-selected="true"]{background:var(--rose);color:white}
+.panel[hidden],[hidden]{display:none!important}.daynav{display:flex;justify-content:space-between;gap:6px;padding:8px;background:#ffffffa8;border:1px solid var(--line);border-radius:16px}.daynav button{flex:1;min-height:48px;border:0;border-radius:11px;background:transparent;color:#795e50;font-weight:800;font-size:calc(15px * var(--scale))}.daynav button[aria-pressed="true"]{background:var(--rose);color:white}.date{text-align:center;font-size:calc(15px * var(--scale));color:var(--soft);margin:14px auto}
+.hero-box{background:linear-gradient(145deg,#fffefa,#fff2e4);border:1px solid #eedbca;border-radius:25px;padding:29px 23px;margin-bottom:17px;text-align:center}.hero-box .symbol{font-size:39px}.hero-box small{display:block;color:#a5644c;font-size:calc(14px * var(--scale));font-weight:850;margin:9px 0}.hero-box h2{font-size:calc(25px * var(--scale));line-height:1.48;letter-spacing:-.045em;margin:0 0 17px}.hero-box>p{font-size:calc(17px * var(--scale));line-height:1.8;text-align:left;color:#61564c;margin:0}.hero-box .paras{margin-top:18px}.hero-box .paras p{text-align:left}
+.paras p,.reading p,.fortune-card p{margin:0;font-size:calc(17px * var(--scale));line-height:1.81;overflow-wrap:break-word}.paras p+p,.reading p+p{margin-top:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.fortune-card,.reading{background:var(--paper);border:1px solid var(--line);border-radius:21px;padding:22px 21px;margin-bottom:14px}.fortune-card h3,.reading h3{font-size:calc(20px * var(--scale));margin:0 0 13px}.fortune-card p+p{margin-top:12px}.reading h3{letter-spacing:-.035em}
+.daily-feature{padding:24px 21px;background:#fffefa;border:1px solid var(--line);border-radius:21px;margin:7px 0 16px}.daily-feature h3{font-size:calc(22px * var(--scale));margin:6px 0 14px}.daily-feature p{font-size:calc(17px * var(--scale));line-height:1.85;margin:0}.daily-feature p+p{margin-top:14px}.tip{background:#f1f5eb;border-radius:12px;color:#53654a;padding:13px 14px;line-height:1.7;font-size:calc(16px * var(--scale))}
+.lucky{padding:16px 18px;background:#f0f5ec;border-radius:16px;font-size:calc(17px * var(--scale));line-height:1.8;margin:15px 0}.disclaimer{padding:16px 18px;background:#fff5e8;border:1px solid #ebd5c0;border-radius:17px;font-size:calc(15px * var(--scale));color:#745b43;line-height:1.84;margin:17px 0}
+.month-title{font-size:calc(22px * var(--scale));margin:27px 0 11px}.months{margin:12px 0}.month{background:#fffefa;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:9px}.month summary{list-style:none;padding:16px;cursor:pointer;min-height:60px;font-size:calc(18px * var(--scale));font-weight:850}.month summary:after{content:"＋";float:right;color:#a76a52}.month[open] summary{background:#fff6eb;border-bottom:1px solid var(--line)}.month[open] summary:after{content:"−"}.month summary::-webkit-details-marker{display:none}.month-inner{padding:18px}.month-inner p{margin:0;line-height:1.88;font-size:calc(16px * var(--scale))}.month-inner p+p{margin-top:13px}.month-inner .tip{margin-top:17px;font-size:calc(15px * var(--scale))}
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:17px 0}.pillar{padding:12px 3px;border-radius:13px;background:#f6efe7;text-align:center;min-width:0}.pillar small{display:block;font-size:calc(13px * var(--scale));color:#796d60}.pillar strong{display:block;font-size:clamp(21px,5vw,30px);color:#9e6045}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.actions button{flex:1;min-height:54px;border:1px solid #e1d1c2;border-radius:13px;background:white;color:#775b4d;font-size:calc(16px * var(--scale));font-weight:800;padding:12px}.actions .primary{background:var(--rose);color:white;border-color:var(--rose)}footer{text-align:center;font-size:calc(13px * var(--scale));color:#877e74;line-height:1.8;padding:10px}
+:focus-visible{outline:3px solid #a86d55;outline-offset:2px}
+@media(max-width:640px){main{padding:15px 13px 36px}.grid{grid-template-columns:1fr}.hero-box{padding:27px 19px}.reading,.fortune-card{padding:21px 20px}.tabs button{font-size:calc(15px * var(--scale))}.formgrid{padding:15px}.row2{gap:7px}}
+</style></head><body><main>
+<div class="langswitch"><span>言語 / 언어</span><a href="../" lang="ko">한국어</a><strong>日本語</strong></div>
+<header><img class="sunicon" src="../icon-192.webp" alt="太陽と星のアプリアイコン"><h1>今日の運勢 ✿</h1>
+<p>毎日の運勢から四柱推命、一年の物語まで</p>
+<div class="profile-summary" id="profileSummary">生年月日を登録すると、その方に合わせた運勢を表示します。登録前は一般向けの読み物をご覧いただけます。</div></header>
+<details class="details-profile" id="profileEditor"><summary>✏️ 生年月日を入力・変更する</summary>
+<form id="profileForm" class="formgrid">
+<label>お名前・ニックネーム（任意）<input id="personName" type="text" maxlength="20" autocomplete="nickname" placeholder="例：さくら"></label>
+<div class="row2"><label>暦の種類<select id="calendarType"><option value="solar">新暦（西暦）</option><option value="lunar">旧暦</option></select></label>
+<label>出生時間<select id="birthBranch"><option value="">不明・選択しない</option>
+<option value="0">子の刻（23〜1時）</option><option value="1">丑の刻（1〜3時）</option><option value="2">寅の刻（3〜5時）</option><option value="3">卯の刻（5〜7時）</option>
+<option value="4">辰の刻（7〜9時）</option><option value="5">巳の刻（9〜11時）</option><option value="6">午の刻（11〜13時）</option><option value="7">未の刻（13〜15時）</option>
+<option value="8">申の刻（15〜17時）</option><option value="9">酉の刻（17〜19時）</option><option value="10">戌の刻（19〜21時）</option><option value="11">亥の刻（21〜23時）</option></select></label></div>
+<div class="row3"><label>生まれた年<input id="birthYear" type="number" inputmode="numeric" min="1900" max="2099" placeholder="例：1970" required></label>
+<label>月<input id="birthMonth" type="number" inputmode="numeric" min="1" max="12" placeholder="例：5" required></label><label>日<input id="birthDay" type="number" inputmode="numeric" min="1" max="31" placeholder="例：27" required></label></div>
+<label class="check" id="leapWrap" hidden><input id="lunarLeap" type="checkbox"> 旧暦の閏月に生まれた</label>
+<p class="hint">薄い文字は入力例です。入力欄をタップすると消えます。出生時間が不明でもご利用いただけます。</p>
+<p class="hint">入力データはこの端末のブラウザ内に保存され、サイトのサーバーには送信されません。韓国語版とも同じ情報を使用できます。</p>
+<button type="submit">🌸 この情報で運勢を見る</button><p id="profileStatus" role="status" class="status"></p></form></details>
+<nav class="tabs" role="tablist" aria-label="運勢のメニュー">
+<button type="button" role="tab" id="tab-today" data-tab="today" aria-controls="panel-today" aria-selected="true">今日</button>
+<button type="button" role="tab" id="tab-saju" data-tab="saju" aria-controls="panel-saju" aria-selected="false" tabindex="-1">四柱推命</button>
+<button type="button" role="tab" id="tab-y2026" data-tab="y2026" aria-controls="panel-y2026" aria-selected="false" tabindex="-1">2026年</button>
+<button type="button" role="tab" id="tab-y2027" data-tab="y2027" aria-controls="panel-y2027" aria-selected="false" tabindex="-1">2027年</button></nav>
+<section id="panel-today" class="panel" role="tabpanel" aria-labelledby="tab-today">
+<div class="daynav"><button type="button" data-offset="-1" aria-pressed="false">昨日</button><button type="button" data-offset="0" aria-pressed="true">今日</button><button type="button" data-offset="1" aria-pressed="false">明日</button></div>
+<p id="dateDisplay" class="date"></p>
+<div class="hero-box"><div class="symbol">☀️</div><small>今日の総合運</small><h2 id="dailyTitle">今日も自分にやさしく</h2>
+<div class="paras" id="dailyOverall"><p>今日は慌てず、心地よい時間を大切にしてみましょう。何気ない会話や景色の中にも、うれしい瞬間があります。</p><p>一日の終わりには、今日よかったことを一つだけ思い出してみてください。ゆっくり休む時間も大切です。</p></div></div>
+<div class="grid">
+<article class="fortune-card"><h3>🌿 健康運</h3><div class="paras" id="dailyHealth"><p>自分の調子に合わせて過ごしましょう。小さな休息も大切です。</p></div></article>
+<article class="fortune-card"><h3>💰 金運</h3><div class="paras" id="dailyMoney"><p>本当に必要なことに心とお金を使う一日を。落ち着いて選びましょう。</p></div></article>
+<article class="fortune-card"><h3>💗 家族・対人運</h3><div class="paras" id="dailyFamily"><p>近しい人に短い言葉で感謝を伝えてみましょう。</p></div></article>
+<article class="fortune-card"><h3>🌷 幸運のヒント</h3><div class="paras" id="dailyLuck"><p>身近な風景の中に好きなものを一つ見つけてみてください。</p></div></article></div>
+<section class="daily-feature"><small>🌸 一日一篇、心に寄り添う読み物</small><h3 id="dailyStoryTitle">小さな幸せを見つける日</h3>
+<div class="paras" id="dailyStory"><p>今日の小さな楽しみを見つけましょう。特別な出来事がなくても、大切な一日になります。</p></div>
+<div class="tip" id="dailyTip">🍵 好きなお茶をゆっくり楽しんでみてください。</div></section>
+<article class="reading" id="personalSigns" hidden><h3 id="animalTitle">🐾 十二支のお話</h3><div class="paras" id="animalText"></div>
+<hr style="border:0;border-top:1px solid #e2e8de;margin:18px 0">
+<h3 id="signTitle">♊ 星座のお話</h3><div class="paras" id="signText"></div>
+<div id="timeTextBlock" hidden><hr style="border:0;border-top:1px solid #e2e8de;margin:18px 0"><h3 id="timeTitle">🌤️ 生まれた時間のお話</h3><div class="paras" id="timeText"></div></div></article>
+<div class="lucky" id="luckyNote">✨ 今日の小さな幸運を大切に。</div></section>
+<section id="panel-saju" class="panel" role="tabpanel" aria-labelledby="tab-saju" hidden>
+<div class="hero-box"><div class="symbol">🌳</div><small>生年月日で読む伝統的な四柱推命</small><h2 id="sajuHeading">あなたの四柱推命</h2>
+<p id="sajuIntro">まず生年月日を登録してください。年・月・日・時の四つの柱を読み解きます。</p></div>
+<div id="sajuContent" hidden><article class="reading"><h3>🌿 四つの柱</h3><div class="pillars">
+<div class="pillar"><small>年柱</small><strong id="pillarYear">—</strong><small id="pillarYearYomi">—</small></div>
+<div class="pillar"><small>月柱</small><strong id="pillarMonth">—</strong><small id="pillarMonthYomi">—</small></div>
+<div class="pillar"><small>日柱</small><strong id="pillarDay">—</strong><small id="pillarDayYomi">—</small></div>
+<div class="pillar"><small>時柱</small><strong id="pillarTime">—</strong><small id="pillarTimeYomi">—</small></div></div><p id="sajuCore"></p></article>
+<article class="reading"><h3 id="stemHeading">🌳 日干の物語</h3><div class="paras" id="stemStory"></div></article>
+<article class="reading"><h3>📖 四柱が語ること</h3><p>四柱推命では、生まれた年・月・日・時間をそれぞれ二つの漢字で表し、合計八つの文字を「八字」と呼びます。そのなかでも生まれた日の最初の一文字を日干といい、木・火・土・金・水という五行の象徴に重ねて読みます。</p><p>年柱には生まれた年の背景、月柱には季節、日柱には本人を象徴する文字、時柱には一日の時刻のイメージがあります。これらの文字だけで性格や人生が決まるわけではありません。古くから伝わる自然の比喩として、楽しみながら読んでください。</p></article>
+<article class="reading"><h3>💗 人とのつながり</h3><p>家族や友人との関係は、特別な出来事ばかりで深まるのではありません。いつものあいさつや、一緒に食べるご飯、何げない会話が少しずつ積み重なっていきます。</p><p>大切な人を思う気持ちと同じくらい、自分をいたわることも忘れないでください。自分にも穏やかな時間を残すことが、人と気持ちよく付き合う支えになることがあります。</p></article>
+<article class="reading"><h3>💰 暮らしと豊かさ</h3><p>五行は世界の変化を説明しようとした伝統的な考え方です。特定の文字が含まれるからといって、収入や財産の増減が予測できるわけではありません。</p><p>生活に必要な支出を見直し、気に入ったものを大切に使い、自分にとっての豊かさとは何かを考えてみましょう。投資や契約を決めるときは、実際の条件や専門的な情報を確認してください。</p></article>
+<article class="reading"><h3>🌷 これからの季節</h3><p>木は春だけが美しいわけではありません。夏の木陰にも、秋の色にも、冬の静かな枝にもそれぞれのよさがあります。人生のどの時期にも、新しい楽しみを見つける余地があるという比喩として受け取ってみてください。</p><p>昔好きだった音楽を聴いたり、行ってみたい場所を探したり、懐かしい人に連絡したり。今日できる小さな一歩から、これからの毎日をやさしく彩っていきましょう。</p></article>
+</div><p id="sajuWarning" class="disclaimer">生年月日を登録すると四柱推命を計算します。計算用の暦データが読み込めない場合、未確認の命式は表示しません。</p></section>
+<section id="panel-y2026" class="panel" role="tabpanel" aria-labelledby="tab-y2026" hidden>
+<div class="hero-box"><div class="symbol">☀️</div><small>2026年・丙午年</small><h2>陽だまりのように、楽しさと休息を大切に</h2><p>新しいことへの好奇心を大切にしながら、自分の心地よい速度で暮らす一年を思い描いてみましょう。</p></div>
+<article class="reading"><h3>✨ 2026年の大きな流れ</h3><div id="intro2026" class="paras"><p>2026年は明るい太陽のような火をイメージする丙午年。活動と休息のバランスを大切にしましょう。</p></div></article>
+<div class="grid yearCards"><article class="fortune-card"><h3>🌷 総合運</h3><p>日々の小さな喜びを探してみましょう。</p></article></div>
+<h3 class="month-title">🗓️ 1月から12月までの運勢</h3><p class="hint">読みたい月をタップすると詳しい文章が開きます。</p><div class="months"></div>
+<p class="disclaimer">2026年は丙午年。四柱推命では主に立春を年の区切りとして考えます。これは伝統の象徴をもとにした娯楽向けの読み物です。年運の長文は現時点では全員共通です。</p></section>
+<section id="panel-y2027" class="panel" role="tabpanel" aria-labelledby="tab-y2027" hidden>
+<div class="hero-box"><div class="symbol">🌾</div><small>2027年・丁未年</small><h2>やさしい灯りのように、日々を整える一年</h2><p>すでにそばにあるものを丁寧に育て、心を穏やかに過ごす一年をイメージしてみましょう。</p></div>
+<article class="reading"><h3>✨ 2027年の大きな流れ</h3><div id="intro2027" class="paras"><p>2027年は穏やかな灯りや大地をイメージする丁未年。暮らしを大切にする時間を作りましょう。</p></div></article>
+<div class="grid yearCards"><article class="fortune-card"><h3>🌷 総合運</h3><p>長く好きだったことに時間を使ってみましょう。</p></article></div>
+<h3 class="month-title">🗓️ 1月から12月までの運勢</h3><p class="hint">読みたい月をタップすると詳しい文章が開きます。</p><div class="months"></div>
+<p class="disclaimer">2027年は丁未年。四柱推命では主に立春を年の区切りとして考えます。これは伝統の象徴をもとにした娯楽向けの読み物です。年運の長文は現時点では全員共通です。</p></section>
+<div class="actions"><button type="button" id="bigger">文字を大きく</button><button type="button" class="primary" id="share">💌 運勢を共有</button><button type="button" id="copyLink">🔗 URLをコピー</button></div>
+<details class="reading"><summary>この運勢について</summary><p>四柱推命や干支、星座の伝統的な象徴を用いた娯楽向けの読み物です。健康や投資、人生の出来事を科学的に予測するものではありません。節気、出生地域、サマータイムによって命式の解釈が異なる場合があります。</p></details>
+<footer>© 今日の運勢 ・ 日々の小さな楽しみのために<br><a href="../" lang="ko">한국어로 보기</a></footer></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.7/lunar.js"></script>
+<script src="./fortune-data.js"></script>
+<script src="./app.js"></script>
+</body></html>
