@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#fbf7ee">
   <meta name="description" content="내가 편안하게 보는 무료 오늘의 운세">
-  <title>오늘의 운세 · 개띠 나를 위한 매일 운세</title>
+  <title>오늘의 운세 · 나의 하루, 사주, 올해의 운</title>
   <style>
     :root {
       color-scheme: light;
@@ -365,7 +365,7 @@
 
     <footer>
       오늘을 기분 좋게 시작하기 위한 작은 이야기예요.<br>
-      생일·띠·별자리·태어난 시간을 활용한 재미와 응원의 글이에요. 실제 미래를 예측하거나 사주팔자를 계산한 내용은 아닙니다.<br>건강과 돈에 관한 중요한 결정은 실제 정보를 확인해주세요.<br>
+      개인정보를 입력한 경우 생일·띠·별자리를 활용하는 재미와 응원의 글이에요. 실제 미래를 예측하거나 사주팔자를 계산한 내용은 아닙니다.<br>건강과 돈에 관한 중요한 결정은 실제 정보를 확인해주세요.<br>
       <span>매일 자정(한국 시간)에 새로운 운세가 열려요.</span>
     </footer>
   </main>
@@ -840,7 +840,7 @@
     }
     async function share() {
       const c = currentData;
-      let body = `🌸 오늘의 운세 · ${c.date}\n\n${c.title}\n${c.overall}\n\n🌿 건강운: ${c.health}\n💰 재물운: ${c.money}\n💗 가족운: ${c.family}\n🌷 행운의 기운: ${c.mood}\n\n🐕 개띠 나: ${c.dog}\n${c.gemini}\n${c.hourNote}\n\n✉ ${c.quote}\n🎨 행운의 색: ${c.color}\n✨ 행운의 물건: ${c.item}`;
+      let body = `🌸 오늘의 운세 · ${c.date}\n\n${c.title}\n${c.overall}\n\n🌿 건강운: ${c.health}\n💰 재물운: ${c.money}\n💗 가족운: ${c.family}\n🌷 행운의 기운: ${c.mood}\n\n🐾 나의 띠별 운세: ${c.dog}\n${c.gemini}\n${c.hourNote}\n\n✉ ${c.quote}\n🎨 행운의 색: ${c.color}\n✨ 행운의 물건: ${c.item}`;
       if (activeView==='today') body+='\n\n🌸 하루의 이야기: '+byId('dailyFeatureTitle').textContent+'\n'+byId('dailyStory1').textContent+'\n'+byId('dailyStory2').textContent+'\n'+byId('dailyStory3').textContent+'\n🍵 작은 실천: '+byId('dailyStoryAction').textContent;
       if(activeView!=='today') body='🌸 오늘의 운세 · '+viewTitles[activeView]+'\n\n'+byId('panel-'+activeView).innerText.trim()+'\n\n※ 전통 명리의 상징을 활용한 참고용 운세입니다.';
       if(location.protocol==='https:') body+='\n\n'+location.href;
