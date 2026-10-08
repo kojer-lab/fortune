@@ -962,27 +962,14 @@
       } catch(e){byId('profileStatus').textContent=e.message||'입력한 정보를 확인해 주세요.';}
     });
     // 길게 읽다가도 언제든 맨 위로 돌아갈 수 있도록 모바일에만 표시합니다.
-    let previousScrollForTop = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
     function updateScrollToTop() {
       const current = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
       const mobile = window.matchMedia ? window.matchMedia('(max-width:640px)').matches : true;
-      const threshold = Math.max(1400, Math.ceil((window.innerHeight || 700) * 1.8));
+      const threshold = Math.max(650, Math.min(850, Math.round((window.innerHeight || 700) * .95)));
       const button = byId('scrollToTop');
-      if (!mobile || current < threshold) {
-        button.hidden = true;
-        previousScrollForTop = current;
-        return;
-      }
-      // 충분히 내려간 뒤 위로 스크롤할 때만 버튼을 노출합니다.
-      // 12px 이하의 작은 움직임은 무시하여 버튼이 깜빡이지 않게 합니다.
-      const delta = current - previousScrollForTop;
-      if (delta <= -12) {
-        button.hidden = false;
-        previousScrollForTop = current;
-      } else if (delta >= 12) {
-        button.hidden = true;
-        previousScrollForTop = current;
-      }
+      // 한 화면쯤 읽으면 노출하고, 위로 스크롤해도 맨 위 부근까지 계속 유지합니다.
+      if (!mobile || current <= 120) button.hidden = true;
+      else if (current >= threshold) button.hidden = false;
     }
     byId('scrollToTop').addEventListener('click', () => {
       const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
