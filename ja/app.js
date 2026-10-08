@@ -153,6 +153,12 @@ function dailyTone(day,seed){
  const choice=((block*7+seed*3)%patterns.length+patterns.length)%patterns.length;
  return patterns[choice][((day%8)+8)%8];
 }
+function moodStoryForDay(stories,day,seed,tone){
+ const block=Math.floor(day/8),begin=block*8;
+ let ordinal=0;
+ for(let d=begin;d<day;d++)if(dailyTone(d,seed)===tone)ordinal++;
+ return stories[((block*2+ordinal+seed)%stories.length+stories.length)%stories.length];
+}
 const moodQuotes={
  ordinary:["普段どおりの暮らしにも大切な時間があります。","急がず、必要な用事を一つずつ確認しましょう。","大きく変わらない一日にも役割があります。"],
  caution:["即答せず条件を確認することも大切な選択です。","大切なことほど少し時間を使って判断しましょう。","言葉や支払いを決める前に確かめてみましょう。"],
@@ -179,7 +185,7 @@ function renderToday(){
     fill(topics[i][1],selectedArea);
   }
   const storyPool=toneBank?toneBank.stories:(toneLibrary.bright&&toneLibrary.bright.stories);
-  const story=storyPool&&storyPool.length?pick(storyPool,dayNo,17,seed+23):null;
+  const story=storyPool&&storyPool.length?(toneBank?moodStoryForDay(storyPool,dayNo,seed,tone):pick(storyPool,dayNo,17,seed+23)):null;
   write("dailyStoryTitle",story?story[0]:title+" 〜 一日を楽しむために");
   fill("dailyStory",story?story.slice(1,4):[
     "今日の小さな目標は、大きな成果ではなく、気分が明るくなる瞬間を見つけることです。何気ない会話やいつもの道の景色も、あとで思い出すと大切な記憶になっていることがあります。",
