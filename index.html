@@ -185,15 +185,18 @@
       }
     }
     .scroll-to-top {
-      position:fixed; right:16px; bottom:calc(22px + env(safe-area-inset-bottom, 0px));
-      width:55px; height:55px; border:1px solid #d8c4b2; border-radius:18px;
-      background:#fffefa; color:#8e5947; box-shadow:0 5px 19px rgba(79,52,31,.19);
-      display:flex; flex-direction:column; gap:0; align-items:center; justify-content:center;
-      font:inherit; cursor:pointer; z-index:35; padding:3px; line-height:1.05;
+      /* 글을 가리지 않도록 오른쪽 가장자리에 붙는 작은 탭 */
+      position:fixed; right:0; bottom:calc(27px + env(safe-area-inset-bottom, 0px));
+      width:40px; height:49px; border:1px solid #dccbbb; border-right:0;
+      border-radius:15px 0 0 15px;
+      background:rgba(255,253,248,.87); color:#98624c;
+      box-shadow:-2px 3px 12px rgba(79,52,31,.12);
+      display:flex; align-items:center; justify-content:center;
+      font:inherit; cursor:pointer; z-index:35; padding:0;
+      -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
     }
     @media (max-width:640px) { html.profile-ready .view { scroll-margin-top:calc(83px + env(safe-area-inset-top, 0px)); } }
-    .scroll-to-top .top-arrow { font-size:25px; font-weight:800; line-height:1; }
-    .scroll-to-top .top-word { font-size:11px; font-weight:850; letter-spacing:.03em; }
+    .scroll-to-top .top-arrow { font-size:25px; font-weight:850; line-height:1; }
     .scroll-to-top:focus-visible { outline:3px solid #a46e57; outline-offset:3px; }
     .scroll-to-top[hidden] { display:none!important; }
     @media (min-width:641px) { .scroll-to-top { display:none!important; } }
@@ -401,7 +404,7 @@
       <span>매일 자정(한국 시간)에 새로운 운세가 열려요.</span>
     </footer>
   </main>
-  <button id="scrollToTop" class="scroll-to-top" type="button" title="맨 위로" aria-label="맨 위로 이동" hidden><span class="top-arrow" aria-hidden="true">↑</span><span class="top-word" aria-hidden="true">TOP</span></button>
+  <button id="scrollToTop" class="scroll-to-top" type="button" title="맨 위로" aria-label="맨 위로 이동" hidden><span class="top-arrow" aria-hidden="true">↑</span></button>
   <div id="toast" class="toast" role="status" hidden></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.7/lunar.js"></script>
   <script>
@@ -959,9 +962,27 @@
       } catch(e){byId('profileStatus').textContent=e.message||'입력한 정보를 확인해 주세요.';}
     });
     // 길게 읽다가도 언제든 맨 위로 돌아갈 수 있도록 모바일에만 표시합니다.
+    let previousScrollForTop = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
     function updateScrollToTop() {
+      const current = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
       const mobile = window.matchMedia ? window.matchMedia('(max-width:640px)').matches : true;
-      byId('scrollToTop').hidden = !mobile || (window.scrollY || document.documentElement.scrollTop || 0) < 430;
+      const threshold = Math.max(1400, Math.ceil((window.innerHeight || 700) * 1.8));
+      const button = byId('scrollToTop');
+      if (!mobile || current < threshold) {
+        button.hidden = true;
+        previousScrollForTop = current;
+        return;
+      }
+      // 충분히 내려간 뒤 위로 스크롤할 때만 버튼을 노출합니다.
+      // 12px 이하의 작은 움직임은 무시하여 버튼이 깜빡이지 않게 합니다.
+      const delta = current - previousScrollForTop;
+      if (delta <= -12) {
+        button.hidden = false;
+        previousScrollForTop = current;
+      } else if (delta >= 12) {
+        button.hidden = true;
+        previousScrollForTop = current;
+      }
     }
     byId('scrollToTop').addEventListener('click', () => {
       const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
