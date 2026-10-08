@@ -165,7 +165,7 @@ function renderToday(){
   const seed=person?Number(person.year)*372+Number(person.month)*31+Number(person.day)+(derived.known?derived.branch:0):2931;
   const tone=dailyTone(dayNo,seed);
   const toneLibrary=window.FORTUNE_MOODS_JA||{};
-  const toneBank=toneLibrary[tone]||null;
+  const toneBank=tone==="bright"?null:(toneLibrary[tone]||null);
   const base=pick(D.daily.overall,dayNo,13,seed);
   const selected=toneBank?pick(toneBank.overall,dayNo,13,seed+17):base;
   const title=selected[0],overallParagraphs=[...selected.slice(1)];
