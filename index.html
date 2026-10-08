@@ -154,6 +154,10 @@
     .profile-form{padding:19px;display:grid;gap:13px}
     .profile-form label{display:grid;gap:6px;color:#65574e;font-size:calc(15px * var(--scale));font-weight:750}
     .profile-form input,.profile-form select{background:white;border:1px solid #d9c9bb;color:#38332d;border-radius:12px;min-width:0;width:100%;min-height:52px;font:inherit;font-size:calc(17px * var(--scale));padding:10px}
+    /* 예시 글자는 실제 저장된 값과 구분하고, 입력 시 즉시 숨깁니다. */
+    .profile-form input::placeholder { color:#aea59a; opacity:.62; font-weight:400; }
+    .profile-form input:focus::placeholder { color:transparent; opacity:0; }
+    .profile-form input:not(:placeholder-shown) { color:#38332d; }
     .profile-form .row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
     .profile-form .row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
     .profile-form label.check{display:flex;align-items:center;gap:8px;font-weight:650}
@@ -194,14 +198,14 @@
     <details class="profile-editor" id="profileEditor">
       <summary>✏️ 내 생년월일 입력 · 변경</summary>
       <form id="profileForm" class="profile-form">
-        <label>이름 또는 별명 (선택)<input type="text" id="personName" maxlength="20" placeholder="예: 행복이"></label>
+        <label>이름 또는 별명 (선택)<input type="text" id="personName" maxlength="20" placeholder="예: 행복이" autocomplete="nickname"></label>
         <div class="row2">
           <label>생일 기준<select id="calendarType"><option value="solar">양력</option><option value="lunar">음력</option></select></label>
           <label>태어난 시간<select id="birthBranch"><option value="">시간 모름</option><option value="0">자시 (23~01시)</option><option value="1">축시 (01~03시)</option><option value="2">인시 (03~05시)</option><option value="3">묘시 (05~07시)</option><option value="4">진시 (07~09시)</option><option value="5">사시 (09~11시)</option><option value="6">오시 (11~13시)</option><option value="7">미시 (13~15시)</option><option value="8">신시 (15~17시)</option><option value="9">유시 (17~19시)</option><option value="10">술시 (19~21시)</option><option value="11">해시 (21~23시)</option></select></label>
         </div>
-        <div class="row3"><label>태어난 해<input id="birthYear" type="number" inputmode="numeric" min="1900" max="2099" placeholder="예: 1970" required></label><label>월<input id="birthMonth" type="number" inputmode="numeric" min="1" max="12" placeholder="5" required></label><label>일<input id="birthDay" type="number" inputmode="numeric" min="1" max="31" placeholder="27" required></label></div>
+        <div class="row3"><label>태어난 해<input id="birthYear" type="number" inputmode="numeric" min="1900" max="2099" placeholder="예: 1970" required></label><label>월<input id="birthMonth" type="number" inputmode="numeric" min="1" max="12" placeholder="예: 5" required></label><label>일<input id="birthDay" type="number" inputmode="numeric" min="1" max="31" placeholder="예: 27" required></label></div>
         <label class="check" id="leapWrap" hidden><input id="lunarLeap" type="checkbox"> 음력 윤달 생일이에요</label>
-        <p>태어난 시간을 모르셔도 괜찮아요. 입력 정보는 이 휴대폰의 브라우저에만 저장돼요. 다른 기기에서 보려면 다시 입력해야 해요.</p>
+        <p>연한 글씨는 입력 예시예요. 빈칸을 누르면 예시가 사라지고, 이미 저장된 정보는 진한 글씨로 보여요. 태어난 시간을 몰라도 괜찮아요.</p><p>입력한 정보는 이 기기의 브라우저에만 저장돼요. 다른 기기에서는 다시 입력해야 해요.</p>
         <button type="submit">🌸 이 정보로 운세 보기</button>
         <p id="profileStatus" role="status"></p>
       </form>
