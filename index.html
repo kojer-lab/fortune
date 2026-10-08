@@ -811,6 +811,14 @@
       const index=((day%8)+8)%8;
       return patterns[choice][index];
     }
+    function moodStoryForDay(stories,day,seed,tone) {
+      // 같은 8일 묶음에서 동일한 분위기가 다시 나와도 다른 글을 고릅니다.
+      const block=Math.floor(day/8),begin=block*8;
+      let ordinal=0;
+      for(let d=begin;d<day;d++)if(dailyTone(d,seed)===tone)ordinal++;
+      const index=((block*2+ordinal+seed)%stories.length+stories.length)%stories.length;
+      return stories[index];
+    }
     const toneQuotes = {
       ordinary:['오늘의 무난한 흐름도 충분히 돌아볼 가치가 있어요.','큰 변화를 서두르기보다 지금 필요한 일을 확인해 보세요.','오늘 해야 할 일 한 가지부터 살펴보는 날이에요.'],
       caution:['확인하지 않은 약속보다 한 번 더 살펴본 선택이 중요해요.','서두르지 않는 것도 하나의 현실적인 선택입니다.','오늘은 말과 지출에 조금 더 여유를 남겨보세요.'],
@@ -864,7 +872,7 @@
       currentData.hourNote = [currentData.hourNote, ...hourDepth].join('\n\n');
       const zodiacNote=customZodiacNotes(currentDay);
       if(zodiacNote){currentData.dog=zodiacNote.dog;currentData.gemini=zodiacNote.gemini;currentData.hourNote=zodiacNote.hourNote;}
-      const story = pick(toneBank ? toneBank.stories : dailyStories, currentDay, 17, 23 + birthdaySeed);
+      const story = toneBank ? moodStoryForDay(toneBank.stories,currentDay,birthdaySeed,tone) : pick(dailyStories,currentDay,17,23+birthdaySeed);
       byId('dailyFeatureTitle').textContent = story[0];
       byId('dailyStory1').textContent = story[1];
       byId('dailyStory2').textContent = story[2];
