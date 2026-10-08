@@ -77,6 +77,7 @@ function initProfile(){
   drawProfile();
 }
 function drawProfile(){
+  document.documentElement.classList.toggle("profile-ready",!!person);
   if(!person){
     write("profileSummary","生年月日を入力すると運勢がその方に合わせて変わります。未登録の場合は、どなたでも読める一般向けの運勢です。");
     hidden("personalSigns",true);
@@ -208,6 +209,7 @@ function submit(e){
     try{localStorage.setItem(key,JSON.stringify(p));write("profileStatus","この端末に保存しました。次回もそのままお使いいただけます。");}
     catch(e){write("profileStatus","運勢は更新されましたが、このブラウザでは保存できませんでした。");}
     drawProfile();offset=0;renderToday();$("profileEditor").open=false;
+    if(window.matchMedia&&window.matchMedia("(max-width:640px)").matches)window.scrollTo({top:0,behavior:"smooth"});
   }catch(err){write("profileStatus",err.message||"入力内容をご確認ください。");}
 }
 async function share(){
@@ -248,5 +250,17 @@ setInterval(autoRefresh,30000);
 try{fontLarge=localStorage.getItem("fortune-ja-big-text")==="1";}catch(e){}
 document.documentElement.style.setProperty("--scale",fontLarge?"1.16":"1");
 if(fontLarge)$("bigger").textContent="通常の文字サイズ";
+function updateScrollToTop(){
+ const mobile=window.matchMedia?window.matchMedia("(max-width:640px)").matches:true;
+ $("scrollToTop").hidden=!mobile||(window.scrollY||document.documentElement.scrollTop||0)<430;
+}
+$("scrollToTop").addEventListener("click",()=>{
+ const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});
+});
+window.addEventListener("scroll",updateScrollToTop,{passive:true});
+window.addEventListener("resize",updateScrollToTop);
+window.addEventListener("pageshow",updateScrollToTop);
+updateScrollToTop();
 renderYears();initProfile();lastDay=nowJapan();renderToday();showTab(location.hash.slice(1),false);
 })();
