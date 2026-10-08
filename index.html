@@ -899,10 +899,23 @@
     setFontSize(large);
     render();
     showView(location.hash.slice(1),false);
-    document.addEventListener('visibilitychange', () => { if (!document.hidden && lastToday !== seoulDay()) { lastToday = seoulDay(); render(); } });
-    window.addEventListener('focus', () => { if (lastToday !== seoulDay()) { lastToday = seoulDay(); render(); } });
-    // 화면을 계속 켜 두어도 한국 시간 자정이 지나면 새 운세를 표시합니다.
-    setInterval(() => { if (lastToday !== seoulDay()) { lastToday = seoulDay(); render(); } }, 30000);
+    // 잠들어 있던 iPhone 홈 화면 앱이 다시 열리면 날짜를 즉시 확인합니다.
+    // 밤을 넘긴 뒤에는 어제/내일 보기를 오늘로 되돌려 지난 운세가 남지 않게 합니다.
+    function refreshForNewDay() {
+      const actualToday = seoulDay();
+      if (actualToday === lastToday) return;
+      lastToday = actualToday;
+      offset = 0;
+      render();
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) refreshForNewDay();
+    });
+    window.addEventListener('focus', refreshForNewDay);
+    // iOS Safari에서 뒤로가기 캐시나 홈 화면 앱으로 복귀하는 상황도 지원합니다.
+    window.addEventListener('pageshow', refreshForNewDay);
+    // 계속 켜 두어도 한국 시간 자정이 지나면 다음 확인에서 갱신됩니다.
+    setInterval(refreshForNewDay, 30000);
   </script>
 </body>
 </html>
