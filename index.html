@@ -12,6 +12,7 @@
   <link rel="icon" type="image/webp" sizes="192x192" href="./icon-192.webp?v=1">
   <link rel="apple-touch-icon" href="./icon-192.webp?v=1">
   <link rel="manifest" href="./manifest.webmanifest?v=1">
+  <link rel="alternate" hreflang="ja" href="./ja/">
   <style>
     :root {
       color-scheme: light;
@@ -167,6 +168,10 @@
     #profileStatus{color:#96543d;font-weight:750}
     .profile-form input:focus-visible,.profile-form select:focus-visible,.profile-editor summary:focus-visible,.profile-form button:focus-visible{outline:3px solid #b57652;outline-offset:1px}
     [hidden]{display:none!important}
+    /* 한국어 / 일본어 전환 */
+    .language-switch { display:flex; align-items:center; justify-content:flex-end; gap:9px; margin:0 0 13px; font-size:calc(14px * var(--scale)); color:#856d5e; }
+    .language-switch a { display:inline-block; padding:7px 13px; border-radius:99px; border:1px solid #e6d4c6; background:#fffefa; color:#965d47; text-decoration:none; font-weight:800; }
+    .language-switch a:focus-visible { outline:3px solid #a46e57; outline-offset:2px; }
     @media(max-width:350px){.fortune-tabs{padding:5px;gap:3px}.fortune-tabs button{font-size:calc(14px * var(--scale))}.saju-pills strong{font-size:20px}}
     @media (max-width: 460px) {
       .container { width: min(100% - 24px, 660px); padding-top: 12px; }
@@ -186,6 +191,7 @@
 <body>
   <main class="container">
     <header class="masthead">
+      <div class="language-switch" aria-label="언어 선택"><strong>한국어</strong><a href="./ja/" lang="ja" hreflang="ja">日本語</a></div>
       <p class="eyebrow">A LITTLE LUCK, EVERY DAY</p>
       <h1>오늘의 운세 <span aria-hidden="true">✿</span></h1>
       <p class="subtitle">오늘의 운세부터 사주와 한 해의 이야기까지</p>
