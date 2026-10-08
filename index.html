@@ -548,7 +548,7 @@
     }
     async function share() {
       const c = currentData;
-      const body = `🌸 엄마의 오늘 · ${c.date}\n\n${c.title}\n${c.overall}\n\n🌿 건강운: ${c.health}\n💰 재물운: ${c.money}\n💗 가족운: ${c.family}\n🌷 행운의 기운: ${c.mood}\n\n🐕 개띠 어머니: ${c.dog}\n${c.gemini}\n${c.hourNote}\n\n✉ ${c.quote}\n🎨 행운의 색: ${c.color}\n✨ 행운의 물건: ${c.item}`;
+      let body = `🌸 엄마의 오늘 · ${c.date}\n\n${c.title}\n${c.overall}\n\n🌿 건강운: ${c.health}\n💰 재물운: ${c.money}\n💗 가족운: ${c.family}\n🌷 행운의 기운: ${c.mood}\n\n🐕 개띠 어머니: ${c.dog}\n${c.gemini}\n${c.hourNote}\n\n✉ ${c.quote}\n🎨 행운의 색: ${c.color}\n✨ 행운의 물건: ${c.item}`;
       if(activeView!=='today') body='🌸 엄마의 오늘 · '+viewTitles[activeView]+'\n\n'+byId('panel-'+activeView).innerText.trim()+'\n\n※ 전통 명리의 상징을 활용한 참고용 운세입니다.';
       if(location.protocol==='https:') body+='\n\n'+location.href;
       try {
