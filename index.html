@@ -191,6 +191,7 @@
       display:flex; flex-direction:column; gap:0; align-items:center; justify-content:center;
       font:inherit; cursor:pointer; z-index:35; padding:3px; line-height:1.05;
     }
+    @media (max-width:640px) { html.profile-ready .view { scroll-margin-top:calc(83px + env(safe-area-inset-top, 0px)); } }
     .scroll-to-top .top-arrow { font-size:25px; font-weight:800; line-height:1; }
     .scroll-to-top .top-word { font-size:11px; font-weight:850; letter-spacing:.03em; }
     .scroll-to-top:focus-visible { outline:3px solid #a46e57; outline-offset:3px; }
@@ -921,6 +922,11 @@
       });
       document.title=(name==='today' && currentData ? currentData.date : viewTitles[name])+' · 오늘의 운세';
       if(syncUrl)try{ history.replaceState(null,'',location.pathname+location.search+(name==='today'?'':'#'+name)); }catch(e){}
+      // 상단에 붙은 탭으로 전환하면 새 내용의 시작 부분이 보이도록 이동합니다.
+      if(syncUrl && person && window.matchMedia && window.matchMedia('(max-width:640px)').matches){
+        const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        byId('panel-'+name).scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      }
     }
     document.querySelectorAll('[data-view]').forEach(btn=>{
       btn.addEventListener('click',()=>showView(btn.dataset.view));
