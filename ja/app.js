@@ -254,17 +254,14 @@ setInterval(autoRefresh,30000);
 try{fontLarge=localStorage.getItem("fortune-ja-big-text")==="1";}catch(e){}
 document.documentElement.style.setProperty("--scale",fontLarge?"1.16":"1");
 if(fontLarge)$("bigger").textContent="通常の文字サイズ";
-let previousScrollForTop=Math.max(0,window.scrollY||document.documentElement.scrollTop||0);
 function updateScrollToTop(){
  const current=Math.max(0,window.scrollY||document.documentElement.scrollTop||0);
  const mobile=window.matchMedia?window.matchMedia("(max-width:640px)").matches:true;
- const threshold=Math.max(1400,Math.ceil((window.innerHeight||700)*1.8));
+ const threshold=Math.max(650,Math.min(850,Math.round((window.innerHeight||700)*.95)));
  const button=$("scrollToTop");
- if(!mobile||current<threshold){button.hidden=true;previousScrollForTop=current;return;}
- // 深くスクロールしたあと、上方向に動かしたときだけ表示。
- const delta=current-previousScrollForTop;
- if(delta<=-12){button.hidden=false;previousScrollForTop=current;}
- else if(delta>=12){button.hidden=true;previousScrollForTop=current;}
+ // 約一画面スクロールしたら表示し、上に戻っても先頭付近まで維持します。
+ if(!mobile||current<=120)button.hidden=true;
+ else if(current>=threshold)button.hidden=false;
 }
 $("scrollToTop").addEventListener("click",()=>{
  const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
