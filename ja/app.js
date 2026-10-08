@@ -16,7 +16,7 @@ function hidden(id,v){$(id).hidden=v;}
 function write(id,txt){$(id).textContent=txt;}
 function fill(id,paras){
   const target=$(id);target.replaceChildren();
-  for(const p of paras){const node=document.createElement("p");node.textContent=p;if(p.startsWith("⚠️"))node.className="caution-paragraph";target.appendChild(node);}
+  for(const p of paras){const node=document.createElement("p");node.textContent=p;target.appendChild(node);}
 }
 function pick(arr,day,mul,seed){return arr[((day*mul+seed)%arr.length+arr.length)%arr.length];}
 function signFor(m,d){const index=(m-1+(d>=limits[m-1]?1:0))%12;return{name:signs[index],icon:mark[index]};}
@@ -112,14 +112,19 @@ function renderYears(){
     const d=D.years[y],panel=$("panel-y"+y);
     const cards=d.cards.map((x,i)=>{const a=document.createElement("article");a.className="fortune-card";const h=document.createElement("h3");h.textContent=["🌷 ","🌿 ","💰 ","💗 "][i]+x[0];const p=document.createElement("p");p.textContent=x[1];a.append(h,p);return a;});
     const cardRegion=panel.querySelector(".yearCards");cardRegion.replaceChildren(...cards);
-    fill("yearWarning"+y,D.annualCautions[y]);
-    fill("intro"+y,d.intro);
+    const yearIntro=[...d.intro];
+    yearIntro[0]+=" ただし、"+D.annualCautions[y][0];
+    yearIntro[1]+=" また、"+D.annualCautions[y][1];
+    fill("intro"+y,yearIntro);
     D.months[y].forEach((x,i)=>{
       const det=document.createElement("details");det.className="month";
       const summary=document.createElement("summary");summary.textContent=(i+1)+"月 · "+x[0];
       const content=document.createElement("div");content.className="month-inner";
-      for(let j=1;j<=2;j++){const p=document.createElement("p");p.textContent=x[j];content.appendChild(p);}
-      if((i+1)%3===0){const caution=document.createElement("p");caution.className="month-caution";caution.textContent=D.quarterCautions[Math.floor(i/3)];content.appendChild(caution);}
+      for(let j=1;j<=2;j++){
+        const p=document.createElement("p");
+        p.textContent=x[j]+(j===2&&(i+1)%3===0?" ただし、"+D.quarterCautions[Math.floor(i/3)]:"");
+        content.appendChild(p);
+      }
       const tip=document.createElement("p");tip.className="tip";tip.textContent="🌷 今月の小さな楽しみ： "+x[3];content.appendChild(tip);
       det.append(summary,content);panel.querySelector(".months").appendChild(det);
     });
@@ -141,7 +146,8 @@ function renderToday(){
   const dayNo=Math.floor(d.getTime()/86400000);
   const seed=person?Number(person.year)*372+Number(person.month)*31+Number(person.day)+(derived.known?derived.branch:0):2931;
   const subject=pick(D.daily.overall,dayNo,13,seed);
-  const overallParagraphs=[...subject.slice(1),pick(D.cautions.overall,dayNo,11,seed+27)];
+  const overallParagraphs=[...subject.slice(1)];
+  overallParagraphs[1]+=" ただし、"+pick(D.cautions.overall,dayNo,11,seed+27);
   write("dateDisplay",year+"年"+month+"月"+day+"日（"+["日","月","火","水","木","金","土"][d.getUTCDay()]+"）");
   write("dailyTitle",subject[0]);
   fill("dailyOverall",overallParagraphs);
@@ -150,7 +156,7 @@ function renderToday(){
   for(let i=0;i<topics.length;i++){
     const category=topics[i][0];
     const reading=[...pick(D.daily[category],dayNo,5+i*2,seed+i*7)];
-    if(i===firstCaution||i===secondCaution)reading.push(pick(D.cautions[category],dayNo,17+i*2,seed+43+i*19));
+    if(i===firstCaution||i===secondCaution)reading[1]+=" ただし、"+pick(D.cautions[category],dayNo,17+i*2,seed+43+i*19);
     fill(topics[i][1],reading);
   }
   write("dailyStoryTitle",subject[0]+" 〜 一日を楽しむために");
