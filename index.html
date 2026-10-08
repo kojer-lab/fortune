@@ -70,8 +70,13 @@
     .fortune-card h3 { font-size: calc(19px * var(--scale)); letter-spacing: -.04em; margin: 0 0 11px; font-weight: 850; }
     .fortune-card p { font-size: calc(17px * var(--scale)); color: #625d58; line-height:1.75; word-break:keep-all; margin:0; }
     /* 여러 문단으로 된 상세 운세를 모바일에서도 읽기 편하게 표시 */
-    .fortune-card p, .zodiac p { white-space:pre-line; }
-    .fortune-card p { line-height:1.88; }
+    /* 줄바꿈 기호가 아닌 실제 문단을 렌더링하여 모바일의 과한 공백 제거 */
+    #panel-today .fortune-paragraphs p { margin:0; line-height:1.67; white-space:normal; word-break:keep-all; overflow-wrap:break-word; }
+    #panel-today .fortune-paragraphs p + p { margin-top:12px; }
+    #panel-today .fortune-card .fortune-paragraphs { margin-top:12px; }
+    #panel-today .zodiac .fortune-paragraphs p { font-size:calc(17px * var(--scale)); }
+    #panel-today .zodiac .fortune-paragraphs.sign-line,
+    #panel-today .zodiac .fortune-paragraphs.hour-line { border-top:1px solid #dce5d5; padding-top:14px; margin-top:15px; }
     .small-title { display:flex; align-items:center; gap:9px; font-size: calc(18px * var(--scale)); margin: 0 0 13px; }
     .bottom-card { border-radius: 21px; background: var(--sage); padding: 24px; margin-top: 15px; }
     .bottom-card p { margin: 0; font-size: calc(19px * var(--scale)); line-height: 1.8; word-break:keep-all; font-weight: 600; }
@@ -225,26 +230,10 @@
     <div class="divider" aria-hidden="true">✦ 나의 하루 살펴보기 ✦</div>
 
     <section class="grid" aria-label="분야별 운세">
-      <article class="fortune-card"><span class="icon" aria-hidden="true">🌿</span><h3>건강운</h3><p id="healthText">식사를 서두르지 말고 천천히 즐겨보세요. 좋은 대화가 곁들이면 더 좋아요.
-
-나를 돌보는 일도 약속처럼 소중하게 생각해 주세요. 가족이나 주변의 일을 챙기느라 내 시간을 뒤로 미뤘다면 잠시라도 스스로의 기분을 살펴보세요.
-
-몸을 가볍게 움직이고 싶다면 안전한 방식으로 무리하지 않는 범위에서 시작하세요. 건강운 문구는 참고용 응원이지 진단이나 처방은 아니에요.</p></article>
-      <article class="fortune-card"><span class="icon" aria-hidden="true">💰</span><h3>재물운</h3><p id="moneyText">오늘은 가진 것에 감사하는 마음을 가져보세요. 마음의 넉넉함도 큰 재산이에요.
-
-오늘은 지출을 무조건 줄이기보다 내가 만족했던 소비를 떠올려보세요. 여러 번 쓰는 편리한 물건이나 오래 기억에 남는 경험에는 저마다의 가치가 있어요.
-
-반대로 생각보다 만족이 적었던 지출이 있다면 다음 선택에 참고해 보세요. 실제 형편에 맞는 생활 계획을 세우는 것이 재물 관리의 기본이에요.</p></article>
-      <article class="fortune-card"><span class="icon" aria-hidden="true">💗</span><h3>가족운</h3><p id="familyText">밥은 먹었니, 잘 지내니 같은 평범한 말이 오늘은 더 따뜻하게 느껴질 거예요.
-
-옛날 사진이나 오래된 여행의 추억을 함께 떠올려보세요. 그때는 별일 아니라고 생각했던 순간이 시간이 지나면 재미있는 가족 이야기가 되기도 해요.
-
-누가 어떤 말을 했는지 서로 다르게 기억하는 것도 추억의 묘미예요. 웃으며 이야기할 수 있다면 그 시간 자체가 좋은 선물이 될 수 있답니다.</p></article>
-      <article class="fortune-card"><span class="icon" aria-hidden="true">🌷</span><h3>행운의 기운</h3><p id="moodText">창문을 열고 맑은 공기를 느껴보세요. 오늘을 새롭게 시작하는 기분이에요.
-
-집 안에서 편안하게 쉬는 공간 하나를 골라보세요. 평소 좋아하는 쿠션이나 책을 가까이 두는 작은 변화로도 기분이 달라질 수 있어요.
-
-산뜻하게 정리한 자리에서 잠시 쉬어보세요. 무엇을 더 사지 않아도 지금 가진 것들로 충분히 기분 좋은 시간을 만들 수 있어요.</p></article>
+      <article class="fortune-card"><span class="icon" aria-hidden="true">🌿</span><h3>건강운</h3><div id="healthText" class="fortune-paragraphs"><p>식사를 서두르지 말고 천천히 즐겨보세요. 좋은 대화가 곁들이면 더 좋아요.</p><p>나를 돌보는 일도 약속처럼 소중하게 생각해 주세요. 가족이나 주변의 일을 챙기느라 내 시간을 뒤로 미뤘다면 잠시라도 스스로의 기분을 살펴보세요.</p><p>몸을 가볍게 움직이고 싶다면 안전한 방식으로 무리하지 않는 범위에서 시작하세요. 건강운 문구는 참고용 응원이지 진단이나 처방은 아니에요.</p></div></article>
+      <article class="fortune-card"><span class="icon" aria-hidden="true">💰</span><h3>재물운</h3><div id="moneyText" class="fortune-paragraphs"><p>오늘은 가진 것에 감사하는 마음을 가져보세요. 마음의 넉넉함도 큰 재산이에요.</p><p>오늘은 지출을 무조건 줄이기보다 내가 만족했던 소비를 떠올려보세요. 여러 번 쓰는 편리한 물건이나 오래 기억에 남는 경험에는 저마다의 가치가 있어요.</p><p>반대로 생각보다 만족이 적었던 지출이 있다면 다음 선택에 참고해 보세요. 실제 형편에 맞는 생활 계획을 세우는 것이 재물 관리의 기본이에요.</p></div></article>
+      <article class="fortune-card"><span class="icon" aria-hidden="true">💗</span><h3>가족운</h3><div id="familyText" class="fortune-paragraphs"><p>밥은 먹었니, 잘 지내니 같은 평범한 말이 오늘은 더 따뜻하게 느껴질 거예요.</p><p>옛날 사진이나 오래된 여행의 추억을 함께 떠올려보세요. 그때는 별일 아니라고 생각했던 순간이 시간이 지나면 재미있는 가족 이야기가 되기도 해요.</p><p>누가 어떤 말을 했는지 서로 다르게 기억하는 것도 추억의 묘미예요. 웃으며 이야기할 수 있다면 그 시간 자체가 좋은 선물이 될 수 있답니다.</p></div></article>
+      <article class="fortune-card"><span class="icon" aria-hidden="true">🌷</span><h3>행운의 기운</h3><div id="moodText" class="fortune-paragraphs"><p>창문을 열고 맑은 공기를 느껴보세요. 오늘을 새롭게 시작하는 기분이에요.</p><p>집 안에서 편안하게 쉬는 공간 하나를 골라보세요. 평소 좋아하는 쿠션이나 책을 가까이 두는 작은 변화로도 기분이 달라질 수 있어요.</p><p>산뜻하게 정리한 자리에서 잠시 쉬어보세요. 무엇을 더 사지 않아도 지금 가진 것들로 충분히 기분 좋은 시간을 만들 수 있어요.</p></div></article>
     </section>
 
 
@@ -258,9 +247,9 @@
     </section>
     <section class="zodiac" id="zodiacSection" hidden aria-labelledby="zodiacTitle">
       <h3 id="zodiacTitle">🐾 띠별 오늘의 이야기</h3>
-      <p id="dogText">나의 띠 이야기는 생년월일을 입력하면 표시돼요.</p>
-      <p class="sign-line" id="geminiText">나의 별자리 이야기는 생년월일을 입력하면 표시돼요.</p>
-      <p class="hour-line" id="hourText">태어난 시간대의 상징도 함께 살펴볼 수 있어요.</p>
+      <div id="dogText" class="fortune-paragraphs"><p>나의 띠 이야기는 생년월일을 입력하면 표시돼요.</p></div>
+      <div id="geminiText" class="sign-line fortune-paragraphs"><p>나의 별자리 이야기는 생년월일을 입력하면 표시돼요.</p></div>
+      <div id="hourText" class="hour-line fortune-paragraphs"><p>태어난 시간대의 상징도 함께 살펴볼 수 있어요.</p></div>
     </section>
 
     <section class="bottom-card" aria-labelledby="wisdomTitle">
@@ -811,14 +800,23 @@
         paragraph.textContent = part.trim();
         heroBody.appendChild(paragraph);
       });
-      byId('healthText').textContent = currentData.health;
-      byId('moneyText').textContent = currentData.money;
-      byId('familyText').textContent = currentData.family;
-      byId('moodText').textContent = currentData.mood;
+      // 상세 운세는 실제 문단 요소로 표시해 불필요한 빈 줄을 없앱니다.
+      const dailyText = {
+        healthText:currentData.health, moneyText:currentData.money,
+        familyText:currentData.family, moodText:currentData.mood,
+        dogText:currentData.dog, geminiText:currentData.gemini,
+        hourText:currentData.hourNote
+      };
+      for (const [id,body] of Object.entries(dailyText)) {
+        const region=byId(id);
+        region.replaceChildren();
+        for (const part of String(body).split(/\n\s*\n/).filter(Boolean)) {
+          const paragraph=document.createElement('p');
+          paragraph.textContent=part.trim();
+          region.appendChild(paragraph);
+        }
+      }
       byId('zodiacTitle').textContent = derived?'🐾 '+derived.animal+'띠의 오늘':'🐾 띠별 오늘의 이야기';
-      byId('dogText').textContent = currentData.dog;
-      byId('geminiText').textContent = currentData.gemini;
-      byId('hourText').textContent = currentData.hourNote;
       byId('birthdayMsg').hidden = !person || !(m === birth.month && d === birth.day);
       byId('quoteText').textContent = currentData.quote;
       byId('colorText').textContent = `🎨 행운의 색 · ${currentData.color}`;
