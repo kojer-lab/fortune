@@ -194,6 +194,10 @@ function showTab(tab,writeUrl=true){
     const b=$("tab-"+name);b.setAttribute("aria-selected",String(name===tab));b.tabIndex=name===tab?0:-1;
   }
   if(writeUrl&&history.replaceState)try{history.replaceState(null,"",location.pathname+location.search+(tab==="today"?"":"#"+tab));}catch(e){}
+  if(writeUrl&&person&&window.matchMedia&&window.matchMedia("(max-width:640px)").matches){
+    const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    $("panel-"+tab).scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
+  }
   document.title=(tab==="today"&&latest?latest.date:"四柱推命・年間運勢")+" · 今日の運勢";
 }
 function autoRefresh(){
