@@ -29,6 +29,27 @@ header{text-align:center;padding:18px 0 24px}header h1{font-size:calc(31px * var
 
 .paras .caution-paragraph{border-top:1px solid var(--line);padding-top:12px;margin-top:14px;font-weight:650;color:#655247}
 .month-inner .month-caution{border-top:1px solid var(--line);padding-top:13px;color:#69584e;font-weight:650}
+
+/* プロフィール登録後はモバイル画面の最上部でタブを固定します */
+@media(max-width:640px){
+ html.profile-ready main {display:flex;flex-direction:column}
+ html.profile-ready main>.tabs {
+   order:-1;position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:25;
+   margin:0 0 16px;background:#fffefa;box-shadow:0 5px 18px rgba(87,57,38,.14)
+ }
+}
+.scroll-to-top{
+ position:fixed;right:16px;bottom:calc(22px + env(safe-area-inset-bottom,0px));
+ width:55px;height:55px;border:1px solid #d8c4b2;border-radius:18px;
+ background:#fffefa;color:#8e5947;box-shadow:0 5px 19px rgba(79,52,31,.19);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+ font:inherit;cursor:pointer;z-index:35;padding:3px;line-height:1.05
+}
+.scroll-to-top .top-arrow{font-size:25px;font-weight:800;line-height:1}
+.scroll-to-top .top-word{font-size:11px;font-weight:850;letter-spacing:.03em}
+.scroll-to-top[hidden]{display:none!important}
+.scroll-to-top:focus-visible{outline:3px solid #a46e57;outline-offset:3px}
+@media(min-width:641px){.scroll-to-top{display:none!important}}
 </style></head><body><main>
 <div class="langswitch"><span>言語 / 언어</span><a href="../" lang="ko">한국어</a><strong>日本語</strong></div>
 <header><img class="sunicon" src="../icon-192.webp" alt="太陽と星のアプリアイコン"><h1>今日の運勢 ✿</h1>
@@ -102,6 +123,7 @@ header{text-align:center;padding:18px 0 24px}header h1{font-size:calc(31px * var
 <div class="actions"><button type="button" id="bigger">文字を大きく</button><button type="button" class="primary" id="share">💌 運勢を共有</button><button type="button" id="copyLink">🔗 URLをコピー</button></div>
 <details class="reading"><summary>この運勢について</summary><p>四柱推命や干支、星座の伝統的な象徴を用いた娯楽向けの読み物です。健康や投資、人生の出来事を科学的に予測するものではありません。節気、出生地域、サマータイムによって命式の解釈が異なる場合があります。</p></details>
 <footer>© 今日の運勢 ・ 日々の小さな楽しみのために<br><a href="../" lang="ko">한국어로 보기</a></footer></main>
+<button id="scrollToTop" class="scroll-to-top" type="button" title="ページの先頭へ" aria-label="ページの先頭に戻る" hidden><span class="top-arrow" aria-hidden="true">↑</span><span class="top-word" aria-hidden="true">TOP</span></button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.7/lunar.js"></script>
 <script src="./fortune-data.js"></script>
 <script src="./app.js"></script>
