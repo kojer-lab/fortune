@@ -872,7 +872,7 @@
       currentData.hourNote = [currentData.hourNote, ...hourDepth].join('\n\n');
       const zodiacNote=customZodiacNotes(currentDay);
       if(zodiacNote){currentData.dog=zodiacNote.dog;currentData.gemini=zodiacNote.gemini;currentData.hourNote=zodiacNote.hourNote;}
-      const story = toneBank ? moodStoryForDay(toneBank.stories,currentDay,birthdaySeed,tone) : pick(dailyStories,currentDay,17,23+birthdaySeed);
+      const story = moodStoryForDay(toneBank ? toneBank.stories : dailyStories,currentDay,birthdaySeed,tone);
       byId('dailyFeatureTitle').textContent = story[0];
       byId('dailyStory1').textContent = story[1];
       byId('dailyStory2').textContent = story[2];
