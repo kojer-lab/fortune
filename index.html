@@ -105,6 +105,28 @@
     .seasons p{border-bottom:1px solid var(--line);padding-bottom:10px}
     .seasons p:last-child{border-bottom:0;padding:0}
     .seasons b{color:#a36043;margin-right:9px}
+
+    .long-reading p{line-height:1.98!important;font-size:calc(17px * var(--scale));word-break:keep-all}
+    .long-reading p+p{margin-top:15px!important}
+    .reading-kicker{display:block;color:#ab684b;font-size:calc(13px * var(--scale));font-weight:850;margin-bottom:8px}
+    .monthly-heading{font-size:calc(23px * var(--scale));margin:30px 0 15px}
+    .month-details{border:1px solid var(--line);background:#fffefa;border-radius:17px;overflow:hidden;margin:9px 0}
+    .month-details summary{list-style:none;min-height:61px;padding:15px 18px;display:flex;gap:8px;align-items:center;cursor:pointer;font-size:calc(18px * var(--scale));font-weight:850}
+    .month-details summary::-webkit-details-marker{display:none}
+    .month-details summary:after{content:'＋';margin-left:auto;color:#a66b51;font-size:23px}
+    .month-details[open] summary:after{content:'−'}
+    .month-details[open] summary{background:#fff6ea;border-bottom:1px solid var(--line)}
+    .month-details summary:focus-visible{outline:3px solid #ac6e52;outline-offset:-3px}
+    .month-body{padding:18px 19px 21px}
+    .month-body p{font-size:calc(16px * var(--scale));line-height:1.88;color:#635c54;word-break:keep-all;margin:0}
+    .month-body p+p{margin-top:13px}
+    .month-hint{background:#f0f4eb;border-radius:12px;padding:12px;color:#52644a!important}
+    .daily-feature{background:#fffefa;border:1px solid var(--line);border-radius:21px;padding:24px 22px;margin:16px 0}
+    .daily-feature h3{font-size:calc(22px * var(--scale));margin:7px 0 15px}
+    .daily-feature p{font-size:calc(17px * var(--scale));line-height:1.91;color:#615b54;word-break:keep-all;margin:0}
+    .daily-feature p+p{margin-top:15px}
+    .daily-tip{background:#eff5eb;padding:15px 17px;border-radius:14px;margin-top:18px;font-size:calc(16px * var(--scale));line-height:1.8;color:#516349}
+    .daily-tip strong{display:block;margin-bottom:5px}
     @media(max-width:350px){.fortune-tabs{padding:5px;gap:3px}.fortune-tabs button{font-size:calc(14px * var(--scale))}.saju-pills strong{font-size:20px}}
     @media (max-width: 460px) {
       .container { width: min(100% - 24px, 660px); padding-top: 12px; }
@@ -201,6 +223,25 @@
       <div class="reading"><h3>💗 인연과 가족</h3><p>사람을 아끼는 마음과 나를 돌보는 마음을 함께 키워보세요. 나무에 바람과 햇살이 필요하듯, 친밀한 관계에도 다정함과 여유가 함께 필요하다는 상징으로 읽어요.</p></div>
       <div class="reading"><h3>☀️ 생활과 마음</h3><p>큰 변화보다 매일의 작은 습관이 모여 하루를 단단히 한다는 메시지예요. 익숙한 곳에서 새로운 즐거움 하나를 발견하고 쉬는 시간도 충분히 챙겨보세요.</p></div>
       <div class="reading"><h3>🍀 오행이 뜻하는 것</h3><p><b>목(木)</b>은 성장, <b>화(火)</b>는 표현, <b>토(土)</b>는 중심, <b>금(金)</b>은 질서, <b>수(水)</b>는 유연함을 상징해요. 어떤 글자가 많거나 적다는 사실만으로 운명이나 건강을 판단할 수는 없어요.</p></div>
+
+      <div class="reading long-reading"><span class="reading-kicker">첫 번째 이야기 · 나무의 상징</span><h3>🌳 갑목, 시간이 지날수록 단단해지는 마음</h3>
+        <p>전통 명리학에서 갑목(甲木)을 말할 때는 하늘을 향해 곧게 자라는 큰 나무를 떠올리곤 해요. 나무는 단번에 자라는 것이 아니라 햇빛과 비, 바람을 지나며 오랜 시간 뿌리를 내리지요. 그래서 갑목은 꾸준함과 성장, 오랫동안 지켜온 자기만의 기준이라는 상징으로 해석해요.</p>
+        <p>그렇다고 어머니가 반드시 강한 사람이어야 한다는 뜻은 아니랍니다. 나무에도 그늘과 물이 필요하듯 사람에게도 쉬어가는 시간이 필요해요. 누군가를 돌보느라 바빴다면 이제는 나 자신을 위해 보내는 시간을 조금 더 아껴보세요.</p>
+        <p>큰 나무처럼 굳게 서 있는 것도 아름답지만 바람이 불 때 부드럽게 흔들릴 줄 아는 것도 지혜예요. 오늘은 그런 나무의 이야기를 떠올리며 내 마음에 가장 편안한 선택 하나를 해보면 어떨까요?</p></div>
+      <div class="reading long-reading"><span class="reading-kicker">두 번째 이야기 · 불과 햇살</span><h3>☀️ 정사월과 오시의 따뜻한 이미지</h3>
+        <p>달 기둥인 정사(丁巳)에는 불을 떠올리게 하는 글자가 담겨 있어요. 불은 명리학에서 표현과 활기, 따뜻한 온기라는 이미지로 읽곤 해요. 가족이 확인한 오시(午時) 역시 한낮의 밝음을 상징하는 시간이지요. 이 둘을 함께 보면 속마음을 부드럽게 표현하고 주변 사람들과 기쁨을 나누는 장면을 상상해볼 수 있어요.</p>
+        <p>하지만 햇빛이 강한 여름에는 나무도 그늘이 필요하지요. 밝고 활기차게 살아야 한다는 부담보다는, 사람들과 함께 즐기는 시간과 조용히 쉬는 시간을 고르게 챙기는 것이 더 소중하다는 뜻으로 읽어주세요.</p>
+        <p>태어난 시각은 가족이 확인한 오시를 사용했어요. 출생 당시 서머타임과 시간 보정 방식을 적용하는 전문 만세력에서는 시주 해석이 달라질 수 있어요.</p></div>
+      <div class="reading long-reading"><span class="reading-kicker">세 번째 이야기 · 인연</span><h3>💗 가족을 사랑하는 만큼 나도 돌보기</h3>
+        <p>나무의 뿌리는 땅속에 숨어 있어도 가지를 든든하게 받쳐줘요. 오랜 친구와 나누는 안부, 가족과 함께 먹는 식사, 별일 없는 날의 전화 통화도 우리 삶의 뿌리 같은 순간이에요. 대단한 선물이 아니어도 다정한 말 한마디가 오래 기억에 남을 수 있답니다.</p>
+        <p>가까운 사람일수록 알아서 마음을 알아주겠지 싶을 때가 있어요. 그럴 때는 '고맙다', '보고 싶다', '잘 지내니' 하는 말을 직접 건네보세요. 동시에 혼자 쉬고 싶은 날의 마음도 존중해보세요. 관계를 오래 가꾸는 데는 다정함과 여유가 함께 필요하니까요.</p></div>
+      <div class="reading long-reading"><span class="reading-kicker">네 번째 이야기 · 생활과 재물</span><h3>💰 마음 편한 풍요를 가꾸는 방법</h3>
+        <p>사주에서 토(土)는 땅과 안정적인 생활의 터전을 떠올리게 하는 상징이에요. 하지만 토의 글자가 있다는 이유로 재산이 늘거나 줄 시기를 알아낼 수는 없어요. 재물운을 읽는 재미는 무엇이 내게 진짜 풍요로운 생활인지 생각해보는 데 있을지도 몰라요.</p>
+        <p>좋아하는 것을 오래 잘 쓰고, 매달 필요한 지출을 살피고, 정말 중요한 일에 기쁜 마음으로 돈을 쓰는 습관을 떠올려보세요. 오래 알고 지낸 사람과 나누는 웃음, 마음 편히 마시는 차 한 잔, 취미를 누릴 여유 또한 귀한 재산일 수 있답니다.</p></div>
+      <div class="reading long-reading"><span class="reading-kicker">다섯 번째 이야기 · 인생의 계절</span><h3>🌷 나이 들수록 깊어지는 아름다움</h3>
+        <p>나무가 아름다운 때는 새싹이 돋는 봄뿐만이 아니에요. 그늘을 만드는 여름에도, 단풍이 드는 가을에도, 고요히 쉬는 겨울에도 각자의 아름다움이 있지요. 이 이야기는 인생에서 어느 시기든 나만의 즐거움을 발견할 수 있다는 따뜻한 비유예요.</p>
+        <p>앞으로 하고 싶은 일을 하나씩 적어보세요. 가보고 싶던 곳을 찾아가기, 한동안 듣지 않았던 노래를 다시 듣기, 오래 연락하지 못한 사람에게 안부 전하기처럼 소박한 일도 좋아요. 인생의 하루하루를 사주가 정하는 것은 아니지만, 어머니가 누릴 수 있는 기쁨은 앞으로도 많이 남아 있답니다.</p>
+        <p><b>지금까지 해온 수고를 기억하되, 앞으로는 나 자신을 위해 웃을 시간도 많이 만들어보세요.</b> 그것이 이 사주 이야기의 가장 따뜻한 결론이에요.</p></div>
       <p class="note-box">📖 이 명식은 확인된 <b>오시(午時)</b>를 적용한 전통 역법 표기예요. 과거의 서머타임이나 시각 보정 방식에 따라 시주 결과는 달라질 수 있어요. 사주풀이는 과학적 예측이 아니라 전통문화에 기초한 참고용 이야기예요.</p>
     </section>
     <section id="panel-y2026" class="view" role="tabpanel" aria-labelledby="tab-y2026" hidden>
