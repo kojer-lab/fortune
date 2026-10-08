@@ -185,7 +185,7 @@ function renderToday(){
     fill(topics[i][1],selectedArea);
   }
   const storyPool=toneBank?toneBank.stories:(toneLibrary.bright&&toneLibrary.bright.stories);
-  const story=storyPool&&storyPool.length?(toneBank?moodStoryForDay(storyPool,dayNo,seed,tone):pick(storyPool,dayNo,17,seed+23)):null;
+  const story=storyPool&&storyPool.length?moodStoryForDay(storyPool,dayNo,seed,tone):null;
   write("dailyStoryTitle",story?story[0]:title+" 〜 一日を楽しむために");
   fill("dailyStory",story?story.slice(1,4):[
     "今日の小さな目標は、大きな成果ではなく、気分が明るくなる瞬間を見つけることです。何気ない会話やいつもの道の景色も、あとで思い出すと大切な記憶になっていることがあります。",
