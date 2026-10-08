@@ -140,32 +140,53 @@ function currentDate(){
   return d;
 }
 function dateKey(d){return d.getUTCFullYear()+"-"+String(d.getUTCMonth()+1).padStart(2,"0")+"-"+String(d.getUTCDate()).padStart(2,"0");}
+function dailyTone(day,seed){
+ const patterns=[
+  ['ordinary','bright','caution','ordinary','heavy','ordinary','bright','caution'],
+  ['bright','ordinary','caution','ordinary','caution','heavy','bright','ordinary'],
+  ['ordinary','caution','bright','heavy','ordinary','caution','ordinary','bright'],
+  ['caution','ordinary','bright','ordinary','heavy','bright','caution','ordinary'],
+  ['ordinary','caution','ordinary','bright','heavy','ordinary','caution','bright'],
+  ['bright','ordinary','heavy','ordinary','caution','bright','ordinary','caution']
+ ];
+ const block=Math.floor(day/8);
+ const choice=((block*7+seed*3)%patterns.length+patterns.length)%patterns.length;
+ return patterns[choice][((day%8)+8)%8];
+}
+const moodQuotes={
+ ordinary:["普段どおりの暮らしにも大切な時間があります。","急がず、必要な用事を一つずつ確認しましょう。","大きく変わらない一日にも役割があります。"],
+ caution:["即答せず条件を確認することも大切な選択です。","大切なことほど少し時間を使って判断しましょう。","言葉や支払いを決める前に確かめてみましょう。"],
+ heavy:["すべてを今日解決する必要はありません。","期待と違う結果から考え直すこともできます。","自分にできることと待つことを分けてみましょう。"]
+};
 function renderToday(){
   const d=currentDate(),keyText=dateKey(d);
   const month=d.getUTCMonth()+1,day=d.getUTCDate(),year=d.getUTCFullYear();
   const dayNo=Math.floor(d.getTime()/86400000);
   const seed=person?Number(person.year)*372+Number(person.month)*31+Number(person.day)+(derived.known?derived.branch:0):2931;
-  const subject=pick(D.daily.overall,dayNo,13,seed);
-  const overallParagraphs=[...subject.slice(1)];
-  overallParagraphs[1]+=" ただし、"+pick(D.cautions.overall,dayNo,11,seed+27);
+  const tone=dailyTone(dayNo,seed);
+  const toneLibrary=window.FORTUNE_MOODS_JA||{};
+  const toneBank=toneLibrary[tone]||null;
+  const base=pick(D.daily.overall,dayNo,13,seed);
+  const selected=toneBank?pick(toneBank.overall,dayNo,13,seed+17):base;
+  const title=selected[0],overallParagraphs=[...selected.slice(1)];
   write("dateDisplay",year+"年"+month+"月"+day+"日（"+["日","月","火","水","木","金","土"][d.getUTCDay()]+"）");
-  write("dailyTitle",subject[0]);
+  write("dailyTitle",title);
   fill("dailyOverall",overallParagraphs);
   const topics=[["health","dailyHealth"],["money","dailyMoney"],["family","dailyFamily"],["luck","dailyLuck"]];
-  const firstCaution=((dayNo%4)+4)%4,secondCaution=(firstCaution+2)%4;
   for(let i=0;i<topics.length;i++){
     const category=topics[i][0];
-    const reading=[...pick(D.daily[category],dayNo,5+i*2,seed+i*7)];
-    if(i===firstCaution||i===secondCaution)reading[1]+=" ただし、"+pick(D.cautions[category],dayNo,17+i*2,seed+43+i*19);
-    fill(topics[i][1],reading);
+    const selectedArea=toneBank?pick(toneBank[category],dayNo,17+i*2,seed+i*13):pick(D.daily[category],dayNo,5+i*2,seed+i*7);
+    fill(topics[i][1],selectedArea);
   }
-  write("dailyStoryTitle",subject[0]+" 〜 一日を楽しむために");
-  fill("dailyStory",[
+  const storyPool=toneBank?toneBank.stories:(toneLibrary.bright&&toneLibrary.bright.stories);
+  const story=storyPool&&storyPool.length?pick(storyPool,dayNo,17,seed+23):null;
+  write("dailyStoryTitle",story?story[0]:title+" 〜 一日を楽しむために");
+  fill("dailyStory",story?story.slice(1,4):[
     "今日の小さな目標は、大きな成果ではなく、気分が明るくなる瞬間を見つけることです。何気ない会話やいつもの道の景色も、あとで思い出すと大切な記憶になっていることがあります。",
-    "慌てずに一つずつ過ごしましょう。うまくいかないことがあっても、今まで積み重ねた時間が消えるわけではありません。自分にもやさしい言葉をかけてください。",
-    "夜には、今日よかったことを一つだけ思い出してみてください。特別な出来事がなくても、穏やかに過ごせたことを喜んでいいのです。"
+    "慌てずに一つずつ過ごしましょう。うまくいかないことがあっても、今まで積み重ねた時間が消えるわけではありません。",
+    "夜には今日よかったことを一つだけ思い出してみてください。"
   ]);
-  write("dailyTip","🍵 今日の小さな楽しみ： "+pick(["好きなお茶をゆっくり味わう","家族に温かなひと言を伝える","懐かしい音楽を一曲聴く","気に入った景色を写真に残す","今日よかったことを一行書く"],dayNo,3,seed));
+  write("dailyTip",story?"🍵 今日の小さな行動： "+story[4]:"🍵 今日の小さな楽しみ： "+pick(["好きなお茶をゆっくり味わう","家族に温かなひと言を伝える","懐かしい音楽を一曲聴く","気に入った景色を写真に残す"],dayNo,3,seed));
   if(derived){
     write("animalTitle","🐾 "+derived.animal+"年のお話");
     fill("animalText",[
@@ -187,9 +208,10 @@ function renderToday(){
     }
   }
   if(person&&month===derived.month&&day===derived.day)write("luckyNote","🎂 お誕生日おめでとうございます！　今日が笑顔の多い一日になりますように。");
+  else if(toneBank) write("luckyNote","🌿 今日のひと言： "+pick(moodQuotes[tone],dayNo,11,seed+13));
   else write("luckyNote","✨ 今日の幸運のヒント： "+pick(["お気に入りの色","温かい飲み物","懐かしい音楽","笑顔のあいさつ","季節の花"],dayNo,5,seed)+" を楽しんでみてください。");
   for(const b of document.querySelectorAll("[data-offset]"))b.setAttribute("aria-pressed",String(Number(b.dataset.offset)===offset));
-  latest={date:keyText,title:subject[0],overview:overallParagraphs.join("\n\n")};
+  latest={date:keyText,title,overview:overallParagraphs.join("\n\n")};
   if(active==="today")document.title=year+"年"+month+"月"+day+"日 · 今日の運勢";
 }
 function showTab(tab,writeUrl=true){
